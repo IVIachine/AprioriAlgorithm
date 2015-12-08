@@ -64,6 +64,7 @@ public:
 	T operator[](int index);
 };
 
+#pragma region Constructor/Destructor
 
 /*      Pre:  None
 *     Post:  This object is initialized using the default
@@ -99,6 +100,11 @@ LinkedList<T>::~LinkedList()
 	clear();
 
 }
+
+#pragma endregion
+
+#pragma region
+#pragma endregion
 
 
 /*      Pre:  The object is instantiated
