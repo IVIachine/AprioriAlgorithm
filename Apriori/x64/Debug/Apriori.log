@@ -1,3 +1,4 @@
 ﻿  main.cpp
-  Apriori.vcxproj -> C:\Users\tcherms\Downloads\Apriori-2015-12-07\Apriori\x64\Debug\Apriori.exe
-  Apriori.vcxproj -> C:\Users\tcherms\Downloads\Apriori-2015-12-07\Apriori\x64\Debug\Apriori.pdb (Partial PDB)
+  LINK : C:\Users\tcherms\Desktop\AprioriAlgorithm\x64\Debug\Apriori.exe not found or not built by the last incremental link; performing full link
+  Apriori.vcxproj -> C:\Users\tcherms\Desktop\AprioriAlgorithm\x64\Debug\Apriori.exe
+  Apriori.vcxproj -> C:\Users\tcherms\Desktop\AprioriAlgorithm\x64\Debug\Apriori.pdb (Partial PDB)

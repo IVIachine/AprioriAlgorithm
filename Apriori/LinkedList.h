@@ -274,8 +274,8 @@ void LinkedList<T>::insertUnsorted(T data)
 	}
 	else
 	{
-		newNode->mNext = mHead;
-		mHead = newNode;
+		mTail->mNext = newNode;
+		mTail = newNode;
 		mCount++;
 		return;
 	}
