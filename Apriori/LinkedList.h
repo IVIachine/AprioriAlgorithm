@@ -62,6 +62,8 @@ public:
 	T    removeAt(int index);
 
 	T operator[](int index);
+
+	friend ostream& operator<<(ostream& out, LinkedList<T>& list);
 };
 
 #pragma region Constructor/Destructor
@@ -103,9 +105,7 @@ LinkedList<T>::~LinkedList()
 
 #pragma endregion
 
-#pragma region
-#pragma endregion
-
+#pragma region Helper Functions
 
 /*      Pre:  The object is instantiated
 *     Post:  The number of nodes in the linked list is returned to the caller
@@ -165,7 +165,6 @@ void LinkedList<T>::setData(int index, T data)
 }
 
 
-
 /*      Pre:  The list is initiated
 *     Post:  All the nodes in the list is deleted
 *  Purpose:  To remove all the nodes in the list
@@ -182,7 +181,6 @@ void LinkedList<T>::clear()
 	mHead = NULL;
 	mTail = NULL;
 }
-
 
 
 /*      Pre:  The list is instantiated
@@ -209,6 +207,79 @@ void LinkedList<T>::display()
 	}
 	cout << endl;
 }
+
+/*      Pre:  The list is instantiated
+*     Post:  The function returns true is the list is empty; false otherwise
+*  Purpose:  To determine if the list is empty
+Cite: Function by Wei
+*****************************************************************************/
+template <typename T>
+bool LinkedList<T>::isEmpty()
+{
+	return mHead == NULL;
+}
+
+
+/*      Pre:  The list is instantiated and the searchKey is available
+*     Post:  The function returns true if the search key exists in the list;
+*            otherwise false
+*  Purpose:  To determine if a specific value exists in the list or not
+Cite: Function mostly by Wei with tweeks from Tyler Chermely
+*****************************************************************************/
+template <typename T>
+bool LinkedList<T>::isExistSorted(T searchKey)
+{
+	Node<T> *tmp;
+	if (mHead == NULL)
+		return false;
+	else if (searchKey < mHead->mData || searchKey > mTail->mData) //If the object is greater than the head and smaller than the tail it isn't in the list
+		return false;
+
+	bool    found = false;
+
+	tmp = mHead;
+	while (tmp != NULL && !found)
+	{
+		if (tmp->mData == searchKey)
+			found = true;
+
+		tmp = tmp->mNext;
+	}
+
+	return found;
+}
+
+
+/*      Pre:  The list is instantiated and the searchKey is available
+*     Post:  The function returns true if the search key exists in the list;
+*            otherwise false
+*  Purpose:  To determine if a specific value exists in the list or not
+Cite: Function mostly by Wei with tweeks from Tyler Chermely
+*****************************************************************************/
+template <typename T>
+bool LinkedList<T>::isExistUnsorted(T searchKey)
+{
+	Node<T> *tmp;
+	if (mHead == NULL)
+		return false;
+
+	bool    found = false;
+
+	tmp = mHead;
+	while (tmp != NULL && !found)
+	{
+		if (tmp->mData == searchKey)
+			found = true;
+
+		tmp = tmp->mNext;
+	}
+
+	return found;
+}
+
+#pragma endregion
+
+#pragma region Insert Functions
 
 /*      Pre:  The list is instantiated and the data is available
 *     Post:  The data is inserted in ascending order
@@ -260,6 +331,7 @@ void LinkedList<T>::insertSorted(T data)
 	return;
 }
 
+
 /*      Pre:  The list is instantiated and the data is available
 *     Post:  The data is inserted in ascending order
 *  Purpose:  To insert data into the list at the head
@@ -287,74 +359,9 @@ void LinkedList<T>::insertUnsorted(T data)
 	}
 }
 
+#pragma endregion
 
-/*      Pre:  The list is instantiated
-*     Post:  The function returns true is the list is empty; false otherwise
-*  Purpose:  To determine if the list is empty
-Cite: Function by Wei
-*****************************************************************************/
-template <typename T>
-bool LinkedList<T>::isEmpty()
-{
-	return mHead == NULL;
-}
-
-/*      Pre:  The list is instantiated and the searchKey is available
-*     Post:  The function returns true if the search key exists in the list;
-*            otherwise false
-*  Purpose:  To determine if a specific value exists in the list or not
-Cite: Function mostly by Wei with tweeks from Tyler Chermely
-*****************************************************************************/
-template <typename T>
-bool LinkedList<T>::isExistSorted(T searchKey)
-{
-	Node<T> *tmp;
-	if (mHead == NULL)
-		return false;
-	else if (searchKey < mHead->mData || searchKey > mTail->mData) //If the object is greater than the head and smaller than the tail it isn't in the list
-		return false;
-
-	bool    found = false;
-
-	tmp = mHead;
-	while (tmp != NULL && !found)
-	{
-		if (tmp->mData == searchKey)
-			found = true;
-
-		tmp = tmp->mNext;
-	}
-
-	return found;
-}
-
-/*      Pre:  The list is instantiated and the searchKey is available
-*     Post:  The function returns true if the search key exists in the list;
-*            otherwise false
-*  Purpose:  To determine if a specific value exists in the list or not
-Cite: Function mostly by Wei with tweeks from Tyler Chermely
-*****************************************************************************/
-template <typename T>
-bool LinkedList<T>::isExistUnsorted(T searchKey)
-{
-	Node<T> *tmp;
-	if (mHead == NULL)
-		return false;
-
-	bool    found = false;
-
-	tmp = mHead;
-	while (tmp != NULL && !found)
-	{
-		if (tmp->mData == searchKey)
-			found = true;
-
-		tmp = tmp->mNext;
-	}
-
-	return found;
-}
-
+#pragma region Remove Functions
 
 /*      Pre:  The list is instantiated and the searchKey is available
 *     Post:  If the searchKey exists, removes it from the list and the
@@ -475,9 +482,6 @@ bool LinkedList<T>::removeUnsorted(T searchKey)
 }
 
 
-
-
-
 /*      Pre:  The list is instantiated and the index is valid
 *     Post:  Remove the element in the specified index location and returns
 *            its content to the caller.  If the index location is invalid, the
@@ -526,6 +530,9 @@ T LinkedList<T>::removeAt(int index)
 	return data;
 }
 
+#pragma endregion
+
+#pragma region
 
 /*      Pre:  The list is instantiated and the index is valid
 *     Post:  The data in the specified index is returned to the caller
@@ -537,5 +544,27 @@ T LinkedList<T>::operator[](int index)
 {
 	return getData(index);
 }
+
+template <typename T>
+ostream& operator<<(ostream& out, LinkedList<T>& list)
+{
+	Node<T> *tmp;
+
+	if (mHead == NULL)
+	{
+		out << "The list is empty\n";
+		return;
+	}
+
+	tmp = mHead;
+	while (tmp != NULL)
+	{
+		out << tmp->mData << " ";
+		tmp = tmp->mNext;
+	}
+	out << endl;
+}
+
+#pragma endregion
 
 #endif
