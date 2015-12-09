@@ -22,10 +22,14 @@
     <ClInclude Include="apriori.h" />
     <ClInclude Include="header.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="ObjectList.h" />
+    <ClInclude Include="PartitionStruct.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="apriori.cpp" />
     <ClCompile Include="functions.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObjectList.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{F97CE3B6-AB95-4143-85FE-1BEA95E5E0B9}</ProjectGuid>

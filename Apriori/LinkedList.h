@@ -62,9 +62,6 @@ public:
 	T    removeAt(int index);
 
 	T operator[](int index);
-
-	template <class J>
-	friend ostream& operator<<(ostream& out, const LinkedList<J>& list);
 };
 
 #pragma region Constructor/Destructor
@@ -91,15 +88,15 @@ template <typename T>
 LinkedList<T>::~LinkedList()
 {
 	// remove all nodes
-	if (mHead != NULL)
-	{
+	//if (mHead != NULL)
+	//{
 		// reinitialize the pointers
 		mHead = NULL;
 		mTail = NULL;
 
 		// reinitialize count
 		mCount = 0;
-	}
+	//}
 	clear();
 
 }
@@ -178,7 +175,6 @@ void LinkedList<T>::clear()
 	{
 		removeAt(0);
 	}
-
 	mHead = NULL;
 	mTail = NULL;
 }
@@ -545,30 +541,6 @@ T LinkedList<T>::operator[](int index)
 {
 	return getData(index);
 }
-
-template <class J>
-ostream& operator<<(ostream& out, const LinkedList<J>& list)
-{
-	LinkedList<J>::Node<J>* tmp;
-
-	if (list.mCount == 0)
-	{
-		out << "The list is empty\n" << endl;
-
-		return out;
-	}
-
-	tmp = list.mHead;
-	while (tmp != NULL)
-	{
-		out << tmp->mData << " ";
-		tmp = tmp->mNext;
-	}
-	out << endl;
-
-	return out;
-}
-
 #pragma endregion
 
 #endif
