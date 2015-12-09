@@ -63,7 +63,7 @@ public:
 
 	T operator[](int index);
 
-	friend ostream& operator<<(ostream& out, LinkedList<T>& list);
+	friend ostream& operator<<(ostream& out, const LinkedList<T>& list);
 };
 
 #pragma region Constructor/Destructor
@@ -546,7 +546,7 @@ T LinkedList<T>::operator[](int index)
 }
 
 template <typename T>
-ostream& operator<<(ostream& out, LinkedList<T>& list)
+ostream& operator<<(ostream& out, const LinkedList<T>& list)
 {
 	Node<T> *tmp;
 
@@ -563,6 +563,8 @@ ostream& operator<<(ostream& out, LinkedList<T>& list)
 		tmp = tmp->mNext;
 	}
 	out << endl;
+
+	return out;
 }
 
 #pragma endregion
