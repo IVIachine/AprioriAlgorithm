@@ -45,7 +45,7 @@ public:
 	LinkedList();
 	~LinkedList();
 
-	int  getCount();
+	int  size();
 	T    getData(int index);
 	void setData(int index, T data);
 
@@ -113,7 +113,7 @@ LinkedList<T>::~LinkedList()
 Cite: Function by Wei
 *****************************************************************************/
 template <typename T>
-int LinkedList<T>::getCount()
+int LinkedList<T>::size()
 {
 	return mCount;
 }
