@@ -3,12 +3,16 @@
 
 int main()
 {
-	const int N = 8;
 	int K = 4;
 	LinkedList<int> *data = new LinkedList<int>();
 
-	for (int i = 0; i < N; i++)
-		data->insertSorted(i + 1);
+	data->insertSorted(22);
+	data->insertSorted(65);
+	data->insertSorted(122);
+	data->insertSorted(3);
+	data->insertSorted(8);
+	data->insertSorted(55);
+
 
 	LinkedList<LinkedList<int>> list = genAll(data, K);
 

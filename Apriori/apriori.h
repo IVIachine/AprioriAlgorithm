@@ -12,7 +12,7 @@ using namespace std;
 
 static LinkedList<LinkedList<int>> genAll(LinkedList<int> *data, int k)
 {
-	int n = data->getCount();
+	int n = data->size();
 	int *combination = new int[k]();
 	LinkedList<int> tmp = LinkedList<int>();
 	LinkedList <LinkedList<int>> theData = LinkedList<LinkedList<int>>();
@@ -29,7 +29,7 @@ static LinkedList<LinkedList<int>> genAll(LinkedList<int> *data, int k)
 	{
 		if (index <= (n + (r - k)))
 		{
-			combination[r] = index + 1;
+			combination[r] = index;
 			if (r == k - 1)
 			{
 
@@ -37,7 +37,7 @@ static LinkedList<LinkedList<int>> genAll(LinkedList<int> *data, int k)
 				tmp.clear();
 				for (int i = 0; i < k; i++)
 				{
-					tmp.insertUnsorted(combination[i]);
+					tmp.insertUnsorted(data->getData(combination[i]));
 				}
 				tmp.display();
 				theData.insertUnsorted(tmp);
@@ -46,7 +46,7 @@ static LinkedList<LinkedList<int>> genAll(LinkedList<int> *data, int k)
 			else
 			{
 				// select index for next position
-				index = combination[r];
+				index = combination[r] + 1;
 				r++;
 			}
 		}
@@ -54,10 +54,10 @@ static LinkedList<LinkedList<int>> genAll(LinkedList<int> *data, int k)
 		{
 			r--;
 			if (r > 0)
-				index = combination[r];
+				index = combination[r] + 1;
 			else
 			{
-				index = combination[0];
+				index = combination[0] + 1;
 			}
 		}
 	}
