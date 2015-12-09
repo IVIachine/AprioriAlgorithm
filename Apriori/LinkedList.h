@@ -549,22 +549,22 @@ T LinkedList<T>::operator[](int index)
 template <class J>
 ostream& operator<<(ostream& out, const LinkedList<J>& list)
 {
-	LinkedList<J>::Node<J> *tmp;
+	LinkedList<J>::Node<J>* tmp;
 
-	if (list.mHead == NULL)
+	if (list.mCount == 0)
 	{
 		out << "The list is empty\n" << endl;
+
+		return out;
 	}
-	else
+
+	tmp = list.mHead;
+	while (tmp != NULL)
 	{
-		tmp = list.mHead;
-		while (tmp != NULL)
-		{
-			out << tmp->mData << " ";
-			tmp = tmp->mNext;
-		}
-		out << endl;
+		out << tmp->mData << " ";
+		tmp = tmp->mNext;
 	}
+	out << endl;
 
 	return out;
 }

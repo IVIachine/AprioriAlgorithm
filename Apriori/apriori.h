@@ -39,6 +39,7 @@ static LinkedList<LinkedList<int>> genAll(LinkedList<int> *data, int k)
 				{
 					tmp.insertUnsorted(data->getData(combination[i]));
 				}
+
 				cout << tmp;
 				theData.insertUnsorted(tmp);
 				index++;
@@ -61,6 +62,7 @@ static LinkedList<LinkedList<int>> genAll(LinkedList<int> *data, int k)
 			}
 		}
 	}
+
 	return theData;
 }
 

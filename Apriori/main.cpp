@@ -14,11 +14,15 @@ int main()
 	data->insertSorted(55);
 
 
-	mainMenu();
-	//LinkedList<LinkedList<int>> list = genAll(data, K);
+	//mainMenu();
+	LinkedList<LinkedList<int>> list = genAll(data, K);
 
-	//list.display();
+	cout
+		<< "\n"
+		<< "Subsets generated."
+		<< "\n\n";
 
+	display(list);
 
 	//cout << (data);
 
