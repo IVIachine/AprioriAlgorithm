@@ -27,37 +27,38 @@ class ObjectList
 		*************************************************************************/
 		Node(const PartitionStruct &data)
 		{
-         int i;
+			 int i;
 
 			mData.arraySize = data.arraySize;
-         mData.theFrequency = data.theFrequency;
+			mData.theFrequency = data.theFrequency;
 
-         mData.myArray = new int[mData.arraySize];
+			mData.myArray = new int[mData.arraySize];
 
-         for (i = 0; i < data.arraySize; i++)
-            mData.myArray[i] = data.myArray[i];
+			for (i = 0; i < data.arraySize; i++)
+				mData.myArray[i] = data.myArray[i];
 
 			mNext = NULL;
 		}
 
       ~Node()
       {
-         Node *tmp;
+			 Node *tmp;
 
-         if (mData.arraySize != 0)
-            delete[] mData.myArray;
+			 if (mData.arraySize != 0)
+					delete[] mData.myArray;
 
-         tmp = mNext;
-         while (tmp != NULL)
-         {
-            mNext = mNext->mNext;
-            mNext->mNext = NULL;
-            delete mNext;
+			 tmp = mNext;
+			 while (tmp != NULL)
+			 {
+					mNext = mNext->mNext;
+					mNext->mNext = NULL;
+					delete mNext;
 
-            tmp = mNext;
-         }
-         mNext = NULL;
-      }
+					tmp = mNext;
+			 }
+
+			 mNext = NULL;
+		  }
 	};
 
 

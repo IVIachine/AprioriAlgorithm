@@ -23,12 +23,14 @@ ObjectList genAll(LinkedList<int> data, int k)
 			combination[r] = index;
 			if (r == k - 1)
 			{
-            myStruct.arraySize = k;
-            myStruct.myArray = new int[k];
+				myStruct.arraySize = k;
+				myStruct.myArray = new int[k];
+
 				for (int i = 0; i < k; i++)
 				{
 					myStruct.myArray[i] = data.getData(combination[i]);
 				}
+				
 				myStruct.theFrequency = 0;		
 				theData.insertUnsorted(myStruct);	
 				myStruct.myArray = NULL;

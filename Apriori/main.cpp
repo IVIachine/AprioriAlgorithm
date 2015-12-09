@@ -2,15 +2,14 @@
 
 int main()
 {
-	int K = 2;
+	int K = 3;
 	LinkedList<int> data = LinkedList<int>();
 
-	data.insertSorted(22);
-	data.insertSorted(65);
-	data.insertSorted(122);
-	data.insertSorted(3);
-	data.insertSorted(4);
-	data.insertSorted(55);
+	int num = 100;
+	for (int i = 0; i < num; i++)
+	{
+		data.insertSorted(1 + rand() % num);
+	}
 
 
 	//mainMenu();
@@ -21,7 +20,10 @@ int main()
 		<< "Subsets generated."
 		<< "\n\n";
 
-	list.display();
+	//list.display();
+	
+	cout
+		<< list.getData(32).myArray[2];
 	
 	system("pause");
 

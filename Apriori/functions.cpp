@@ -18,3 +18,11 @@ void mainMenu()
 		
 	}
 }
+
+LinkedList<int> reverseFunction(ObjectList list)
+{
+	for (int i = 0; i < list.size(); i++)
+	{
+		for (int j = 0; )
+	}
+}
