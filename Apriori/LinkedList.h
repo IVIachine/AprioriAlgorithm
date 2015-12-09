@@ -63,7 +63,8 @@ public:
 
 	T operator[](int index);
 
-	friend ostream& operator<<(ostream& out, const LinkedList<T>& list);
+	template <class J>
+	friend ostream& operator<<(ostream& out, const LinkedList<J>& list);
 };
 
 #pragma region Constructor/Destructor
@@ -545,24 +546,25 @@ T LinkedList<T>::operator[](int index)
 	return getData(index);
 }
 
-template <typename T>
-ostream& operator<<(ostream& out, const LinkedList<T>& list)
+template <class J>
+ostream& operator<<(ostream& out, const LinkedList<J>& list)
 {
-	Node<T> *tmp;
+	LinkedList<J>::Node<J> *tmp;
 
-	if (mHead == NULL)
+	if (list.mHead == NULL)
 	{
-		out << "The list is empty\n";
-		return;
+		out << "The list is empty\n" << endl;
 	}
-
-	tmp = mHead;
-	while (tmp != NULL)
+	else
 	{
-		out << tmp->mData << " ";
-		tmp = tmp->mNext;
+		tmp = list.mHead;
+		while (tmp != NULL)
+		{
+			out << tmp->mData << " ";
+			tmp = tmp->mNext;
+		}
+		out << endl;
 	}
-	out << endl;
 
 	return out;
 }
