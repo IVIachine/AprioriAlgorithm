@@ -13,8 +13,8 @@ int main()
 	data->insertSorted(8);
 	data->insertSorted(55);
 
-
-	LinkedList<LinkedList<int>> list = genAll(data, K);
+	mainMenu();
+	//LinkedList<LinkedList<int>> list = genAll(data, K);
 
 	//list.display();
 
