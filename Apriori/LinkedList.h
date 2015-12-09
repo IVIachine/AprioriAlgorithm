@@ -532,7 +532,7 @@ T LinkedList<T>::removeAt(int index)
 
 #pragma endregion
 
-#pragma region
+#pragma region Operator Overloads
 
 /*      Pre:  The list is instantiated and the index is valid
 *     Post:  The data in the specified index is returned to the caller
