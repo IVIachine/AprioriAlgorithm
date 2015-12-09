@@ -4,20 +4,25 @@
 int main()
 {
 	int K = 4;
-	LinkedList<int> *data = new LinkedList<int>();
+	LinkedList<int> data;
 
-	data->insertSorted(22);
-	data->insertSorted(65);
-	data->insertSorted(122);
-	data->insertSorted(3);
-	data->insertSorted(8);
-	data->insertSorted(55);
+	data.insertSorted(22);
+	data.insertSorted(65);
+	data.insertSorted(122);
+	data.insertSorted(3);
+	data.insertSorted(8);
+	data.insertSorted(55);
+
 
 	mainMenu();
 	//LinkedList<LinkedList<int>> list = genAll(data, K);
 
 	//list.display();
 
+
+	//LinkedList<LinkedList<int>> list = genAll(data, K);
+
+	cout << (data);
 
 	system("pause");
 
