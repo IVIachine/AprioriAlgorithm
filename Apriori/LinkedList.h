@@ -287,6 +287,7 @@ template <typename T>
 void LinkedList<T>::insertSorted(T data)
 {
 	Node<T> *tmp, *oneBefore, *newNode;
+
 	newNode = new Node<T>(data);
 	if (newNode == NULL)
 		return;
@@ -295,7 +296,6 @@ void LinkedList<T>::insertSorted(T data)
 	{
 		mHead = newNode;
 		mTail = newNode;
-		mCount++;
 	}
 	else
 	{
@@ -303,13 +303,11 @@ void LinkedList<T>::insertSorted(T data)
 		{
 			newNode->mNext = mHead;
 			mHead = newNode;
-			mCount++;
 		}
 		else if (data > mTail->mData)
 		{
 			mTail->mNext = newNode;
 			mTail = newNode;
-			mCount++;
 		}
 		else if (data == mHead->mData || data == mTail->mData)
 		{
@@ -325,12 +323,21 @@ void LinkedList<T>::insertSorted(T data)
 				oneBefore = tmp;
 				tmp = tmp->mNext;
 			}
-			newNode->mNext = tmp;
-			oneBefore->mNext = newNode;
-			mCount++;
+
+			if (tmp->mData != data)
+			{
+				newNode->mNext = tmp;
+				oneBefore->mNext = newNode;
+			}
+			else
+			{
+				delete newNode;
+				return;
+			}
 		}
 	}
-	return;
+
+	mCount++;
 }
 
 
