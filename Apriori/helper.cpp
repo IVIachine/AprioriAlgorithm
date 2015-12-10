@@ -24,7 +24,7 @@ void errorMessage(string message, FUNC_PTR fallback)
 
 	pause();
 
-	execute(fallback);
+	fallback();
 }
 
 void execute(FUNC_PTR func)
