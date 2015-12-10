@@ -27,12 +27,15 @@ void mainMenu()
 
 		LinkedList<int> *transactions = new LinkedList<int>[numTrans](); //Array of linked lists
 
+		// Display that the file was found
+		// and how many entries it has
 		cout
 			<< "The file, " << fName << ", was found." << "(" << numTrans / 1000 << "K transactions) \n"
 			<< "\nLoading data. \n";
 
 		int cur, next, item;
 
+		// Load data and insert into lists
 		while (!file.eof())
 		{
 			file >> cur;
@@ -41,6 +44,8 @@ void mainMenu()
 			transactions[cur - 1].insertSorted(item);
 		}
 
+
+		// Print everything when it's complete
 		for (int i = 0; i < numTrans; i++)
 		{
 			cout << "[" << i + 1 << "] ";
