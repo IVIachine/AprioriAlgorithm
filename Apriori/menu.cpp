@@ -37,6 +37,17 @@ int Menu::getSelection(string str)
 
 }
 
+bool Menu::isNumber(string str)
+{
+	for (auto i = str.begin(); i != str.end(); i++)
+	{
+		if (!isdigit(*i))
+			return false;
+	}
+
+	return true;
+}
+
 void Menu::pause()
 {
 	system("pause");

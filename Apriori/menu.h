@@ -25,6 +25,7 @@ private:
 	void	clear();
 	void	errorMessage(string message);
 	int		getSelection(string str);
+	bool	isNumber(string str);
 	void	pause();
 	void	print(char* text);
 	void	printl(char* text);
