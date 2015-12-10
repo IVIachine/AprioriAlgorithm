@@ -8,5 +8,7 @@
 
 using namespace std;
 
-LinkedList<int> reverseFunction(ObjectList& list);
+void mainMenu();
+int getTransNum(string fileName);
+bool isDigit(char c);
 

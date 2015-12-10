@@ -6,7 +6,7 @@ int main()
 {
 	srand(time(NULL));
 
-	int K = 3;
+	/*int K = 3;
 	LinkedList<int> data = LinkedList<int>();
 
 	int num = 10;
@@ -17,12 +17,12 @@ int main()
 
 	ObjectList list = genAll(data, K);
 
-	LinkedList<int> list2 = reverseFunction(list);
+	LinkedList<int> list2 = reverseFunction(list);*/
 
 	//list2.display();
 
-	Menu menu = Menu();
-	menu.main();
-
+	//Menu menu = Menu();
+	//menu.main();
+	mainMenu();
 	return 0;
 } 

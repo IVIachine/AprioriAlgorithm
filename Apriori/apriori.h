@@ -10,6 +10,7 @@ using namespace std;
 
 
 ObjectList genAll(LinkedList<int> data, int k);
+LinkedList<int> reverseFunction(ObjectList& list);
 
 
 #endif
