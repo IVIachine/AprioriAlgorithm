@@ -1,7 +1,7 @@
 #include "apriori.h"
 
 
-ObjectList genAll(LinkedList<int> data, int k)
+ObjectList aprioriGen(LinkedList<int> data, int k)
 {
 	int n = data.size();
 	int *combination = new int[k]();
@@ -31,7 +31,7 @@ ObjectList genAll(LinkedList<int> data, int k)
 					myStruct.data[i] = data.getData(combination[i]);
 				}
 				
-				myStruct.frequency = 0;		
+				//myStruct.frequency = 0;
 				theData.insertUnsorted(myStruct);	
 				myStruct.data = NULL;
 				delete[] myStruct.data;
@@ -57,7 +57,6 @@ ObjectList genAll(LinkedList<int> data, int k)
 	return theData;
 }
 
-
 LinkedList<int> reverseFunction(ObjectList& list)
 {
 	LinkedList<int> result;
@@ -72,4 +71,86 @@ LinkedList<int> reverseFunction(ObjectList& list)
 	}
 
 	return result;
+}
+
+LinkedList<int> getF1(LinkedList<int>* list, int size)
+{
+	LinkedList<int> tmp = LinkedList<int>();
+
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < list[i].size(); j++)
+		{
+			tmp.insertSorted(list[i][j]);
+		}
+	}
+
+	return tmp;
+}
+
+ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min)
+{
+	ObjectList C;
+	LinkedList<int> f1 = getF1(data, size);
+	LinkedList<int> F = f1;
+
+	cout << "Begin... \n\n";
+
+	int k = 0;
+	while(!F.isEmpty())
+	{
+		k++;
+
+		if (F.isEmpty())
+			break;
+
+		// All possible combinations within the entire set
+		C = aprioriGen(F, k);
+
+		cout << "Iteration [" << k << "] begin\n";
+
+
+		for (int i = 0; i < size; i++)
+		{
+			// All possible combinations within a transaction
+			ObjectList c = aprioriGen(data[i], k);
+
+			// Iterate through all subsets in c
+			for (int j = 0; j < c.size(); j++)
+			{
+				// Iterate through all subsets in C
+				for (int p = 0; p < C.size(); p++)
+				{
+					if (C[p] == c[j])
+					{
+						C[p].frequency++;
+					}
+				}
+			}
+		}
+
+		ObjectList fk = ObjectList();
+
+		for (int i = 0; i < C.size(); i++)
+		{
+			if (C[i].frequency >= min)
+			{
+				fk.insertUnsorted(C[i]);
+			}
+		}
+		
+		F.clear();
+		F = reverseFunction(fk);
+		
+		cout << "\n" << C.size() << "\n\n";
+
+		cout << "Iteration [" << k << "] complete\n\n";
+
+		if (fk.isEmpty())
+		{
+			return C;
+		}
+	}
+
+	return C; 
 }

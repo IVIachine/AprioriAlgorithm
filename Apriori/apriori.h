@@ -9,9 +9,12 @@
 using namespace std;
 
 
-ObjectList genAll(LinkedList<int> data, int k);
+ObjectList aprioriGen(LinkedList<int> data, int k);
 
 LinkedList<int> reverseFunction(ObjectList& list);
 
+LinkedList<int> getF1(LinkedList<int>* list, int size);
+
+ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min);
 
 #endif

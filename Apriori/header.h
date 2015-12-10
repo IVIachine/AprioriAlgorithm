@@ -6,12 +6,16 @@
 #include "apriori.h"
 #include "LinkedList.h"
 #include "ObjectList.h"
+#include "timerSystem.h"
 
 using namespace std;
 
 void mainMenu();
-LinkedList<int>* loadData(string fName, bool showDebugInfo = false);
+
+LinkedList<int>* loadData(string fName, bool showMessages, bool showResults);
 
 int getTransNum(string fileName);
+
 bool isDigit(char c);
+
 

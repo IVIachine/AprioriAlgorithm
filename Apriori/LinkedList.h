@@ -197,12 +197,13 @@ void LinkedList<T>::display()
 	}
 
 	tmp = mHead;
+	cout << "\n";
 	while (tmp != NULL)
 	{
 		cout << tmp->mData << " ";
 		tmp = tmp->mNext;
 	}
-	cout << endl;
+	cout << "\n\n";
 }
 
 /*      Pre:  The list is instantiated

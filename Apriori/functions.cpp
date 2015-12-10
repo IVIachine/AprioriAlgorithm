@@ -4,36 +4,54 @@
 
 void mainMenu()
 {
-	string fName = "T5.N0.1K.D10K"; // <- so we don't have to type it in while debugging
-
+	//string fName = "T5.N0.1K.D1K"; // <- so we don't have to type it in while debugging
+	string fName = "test";
 	//fName = getString("Please enter the file you would like to load in: ");
 
-	LinkedList<int>* trans = loadData(fName, true);
+	LinkedList<int>* data = loadData(fName, false, false);	
 
-	delete[] trans;
+	TimerSystem timer;
+
+	timer.startClock();
+	ObjectList result = aprioriAlgorithm(data, 500, 10);
+	double time = timer.getTime();
+
+	result.display();
+
+	cout 
+		<< "Done. Operation took " << time << "s to complete.";
+
+	pause();
+
+	delete[] data;
 }
 
-LinkedList<int>* loadData(string fName, bool showDebugInfo)
+LinkedList<int>* loadData(string fName, bool showMessages, bool showResults)
 {
 	ifstream file("dataset/" + fName + ".txt");
 
 	if (!file.good())
 	{
+		cout
+			<< "The requested file could not be found. Redirecting to main menu.";
+
+		pause();
+
 		mainMenu();
 	}
 	else
 	{
-		int numTrans = getTransNum(fName);
+		int numTrans = 500;
 
 		if (numTrans == -1)
 		{
 			file.close();
-			return;
+			return NULL;
 		}
 
 		LinkedList<int>* transactions = new LinkedList<int>[numTrans](); //Array of linked lists
 
-		if (showDebugInfo)
+		if (showMessages)
 		{
 			// Display that the file was found
 			// and how many entries it has
@@ -53,18 +71,19 @@ LinkedList<int>* loadData(string fName, bool showDebugInfo)
 			transactions[trans - 1].insertSorted(item);
 		}
 
-		if (showDebugInfo)
+		if (showMessages)
 		{
-			cout << "Loading complete. Displaying results... \n\n";
+			cout << "Loading complete. " << (showResults ? " Displaying results... \n\n" : "");
 
 			// Print everything when it's complete
-			for (int i = 0; i < numTrans; i++)
+			if (showResults)
 			{
-				cout << "[" << i + 1 << "] ";
-				transactions[i].display();
+				for (int i = 0; i < numTrans; i++)
+				{
+					cout << "[" << i + 1 << "] ";
+					transactions[i].display();
+				}
 			}
-
-			pause();
 		}
 
 		file.close();

@@ -4,9 +4,10 @@
 
 int main()
 {
+	/*
 	srand(time(NULL));
 
-	/*int K = 3;
+	int K = 3;
 	LinkedList<int> data = LinkedList<int>();
 
 	int num = 10;
@@ -15,13 +16,14 @@ int main()
 		data.insertSorted(1 + rand() % num);
 	}
 
-	ObjectList list = genAll(data, K);
+	ObjectList list = aprioriGen(data, K);
 
-	LinkedList<int> list2 = reverseFunction(list);*/
+	LinkedList<int> list2 = reverseFunction(list);
 
-	//list2.display();
+	list2.display();
 
-	//int i = getInt();
+	pause();
+	*/
 
 	mainMenu();
 

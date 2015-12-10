@@ -37,11 +37,6 @@ struct PartitionStruct
 	}
 };
 
-inline bool operator ==(PartitionStruct lhs, PartitionStruct rhs)
-{
-	return lhs.data == rhs.data;
-}
-
 inline ostream& operator<<(ostream& out, PartitionStruct p)
 {
 	for (int i = 0; i < p.size; i++)
@@ -51,4 +46,21 @@ inline ostream& operator<<(ostream& out, PartitionStruct p)
 	out << endl;
 	return out;
 }
+
+inline bool operator==(const PartitionStruct& lhs, const PartitionStruct& rhs)
+{
+	if (lhs.size == rhs.size)
+	{
+		for (int i = 0; i < lhs.size; i++)
+		{
+			if (lhs.data[i] != rhs.data[i])
+				return false;
+		}
+
+		return true;
+	}
+
+	return false;
+}
+
 #endif // !PARTITIONSTRUCT

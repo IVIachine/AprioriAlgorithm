@@ -129,6 +129,25 @@ void ObjectList::display()
 }
 
 /*      Pre:  The list is instantiated
+*     Post:  The entire list is displayed on the screen
+*  Purpose:  To show the content of the list
+Cite: function by Wei
+*****************************************************************************/
+void ObjectList::display(int i)
+{
+	cout
+		<< "F: " << getData(i).frequency << "\n"
+		<< "S: " << getData(i).size << "\n"
+		<< "D: {";
+
+	for (int m = 0; m < getData(i).size; m++)
+	{
+		cout << getData(i).data[m] << (m != getData(i).size - 1 ? ", " : "");
+	}
+	cout << "}\n";
+}
+
+/*      Pre:  The list is instantiated
 *     Post:  The function returns true is the list is empty; false otherwise
 *  Purpose:  To determine if the list is empty
 Cite: Function by Wei
@@ -309,8 +328,18 @@ PartitionStruct ObjectList::removeAt(int index)
 *  Purpose:  To retrieve the specified nodes in the list using [] operator
 Cite: Function by Wei
 *****************************************************************************/
-PartitionStruct ObjectList::operator[](int index)
+PartitionStruct& ObjectList::operator[](int index)
 {
-	return getData(index);
+	int     i;
+	Node *tmp;
+
+	if (index < 0 || index >= mCount)
+		return PartitionStruct();
+
+	tmp = mHead;
+	for (i = 0; i < index; i++)
+		tmp = tmp->mNext;
+
+	return tmp->mData;
 }
 #pragma endregion

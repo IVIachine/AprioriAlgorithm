@@ -76,6 +76,7 @@ public:
 
 	void clear();
 	void display();
+	void display(int i);
 	void insertUnsorted(const PartitionStruct &data);
 
 	bool isEmpty();
@@ -83,9 +84,7 @@ public:
 	bool removeUnsorted(PartitionStruct data);
 	PartitionStruct    removeAt(int index);
 
-	PartitionStruct operator[](int index);
-
-
+	PartitionStruct& operator[](int index);
 };
 #endif // !OBJECTLIST
 
