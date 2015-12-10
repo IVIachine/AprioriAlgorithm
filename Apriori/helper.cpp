@@ -64,13 +64,12 @@ void pause()
 	system("pause");
 }
 
-void print(char* text)
+void print(string text)
 {
-	printf(text);
+	cout << text;
 }
 
-void printl(char* text)
+void printl(string text)
 {
-	printf("\n");
-	printf(text);
+	cout << "\n" << text;
 }

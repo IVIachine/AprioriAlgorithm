@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <fstream>
-#include <stdio.h>
 
 using namespace std;
 
@@ -16,7 +15,7 @@ void	errorMessage(string message, FUNC_PTR fallBack);
 int		getInt();
 bool	isNumber(string str);
 void	pause();
-void	print(char* text);
-void	printl(char* text);
+void	print(string text);
+void	printl(string text);
 
 #endif // !_HELPER_H_
