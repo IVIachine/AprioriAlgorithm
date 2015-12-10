@@ -2,6 +2,7 @@
 #include <string>
 #include <time.h>
 
+#include "helper.h"
 #include "apriori.h"
 #include "LinkedList.h"
 #include "ObjectList.h"

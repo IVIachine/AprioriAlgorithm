@@ -34,17 +34,19 @@ void execute(FUNC_PTR func)
 
 int getInt()
 {
+	// Should work :p
+
 	string str;
-	getline(cin, str);
-
-	if (isNumber(str))
+	
+	do
 	{
-		return stoi(str);
-	}
+		printl("Please enter a valid integer: ");
 
-	errorMessage("Please try again, and, this time, enter a number.");
+		getline(cin, str);
 
-	return 0;
+	} while (!isNumber(str));
+
+	return stoi(str);
 }
 
 bool isNumber(string str)
