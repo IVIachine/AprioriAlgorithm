@@ -299,17 +299,22 @@ void LinkedList<T>::insertSorted(T data)
 	}
 	else
 	{
-		if (data <= mHead->mData)
+		if (data < mHead->mData)
 		{
 			newNode->mNext = mHead;
 			mHead = newNode;
 			mCount++;
 		}
-		else if (data >= mTail->mData)
+		else if (data > mTail->mData)
 		{
 			mTail->mNext = newNode;
 			mTail = newNode;
 			mCount++;
+		}
+		else if (data == mHead->mData || data == mTail->mData)
+		{
+			delete newNode;
+			return;
 		}
 		else
 		{

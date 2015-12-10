@@ -19,10 +19,11 @@ void mainMenu()
 	}
 }
 
-LinkedList<int> reverseFunction(ObjectList list)
+LinkedList<int> reverseFunction(ObjectList& list, int k)
 {
-	for (int i = 0; i < list.size(); i++)
-	{
-		for (int j = 0; )
-	}
+	LinkedList<int> result;
+
+	cout << list.size(); 
+
+	return result;
 }

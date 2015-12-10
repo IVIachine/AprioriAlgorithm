@@ -61,7 +61,6 @@ class ObjectList
 		  }
 	};
 
-
 private:
 	Node *mHead, *mTail;
 	int     mCount;
