@@ -1,8 +1,4 @@
-﻿  main.cpp
-c:\users\tcherms\desktop\apriorialgorithm\apriori\main.cpp(7): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  functions.cpp
-  apriori.cpp
-  Generating Code...
-  LINK : C:\Users\tcherms\Desktop\AprioriAlgorithm\x64\Debug\Apriori.exe not found or not built by the last incremental link; performing full link
+﻿  functions.cpp
+c:\users\tcherms\desktop\apriorialgorithm\apriori\functions.cpp(95): warning C4715: 'loadData': not all control paths return a value
   Apriori.vcxproj -> C:\Users\tcherms\Desktop\AprioriAlgorithm\x64\Debug\Apriori.exe
   Apriori.vcxproj -> C:\Users\tcherms\Desktop\AprioriAlgorithm\x64\Debug\Apriori.pdb (Partial PDB)

@@ -90,23 +90,25 @@ LinkedList<int> getF1(LinkedList<int>* list, int size)
 
 ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min)
 {
-	ObjectList C;
+	ObjectList C, lastC;
 	LinkedList<int> f1 = getF1(data, size);
 	LinkedList<int> F = f1;
 
-	cout << "Begin... \n\n";
+	cout << "Mining Data... \n\n";
 
 	int k = 0;
 	while(!F.isEmpty())
 	{
 		k++;
 
-		if (F.isEmpty())
-			break;
+		
 
 		// All possible combinations within the entire set
 		C = aprioriGen(F, k);
-
+		if (C.isEmpty())
+		{
+			return lastC;
+		}
 		cout << "Iteration [" << k << "] begin\n";
 
 
@@ -145,12 +147,9 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min)
 		cout << "\n" << C.size() << "\n\n";
 
 		cout << "Iteration [" << k << "] complete\n\n";
-
-		if (fk.isEmpty())
-		{
-			return C;
-		}
+		lastC = C;
+		
 	}
 
-	return C; 
+	return lastC; 
 }

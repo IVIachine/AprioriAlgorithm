@@ -4,8 +4,8 @@
 
 void mainMenu()
 {
-	//string fName = "T5.N0.1K.D1K"; // <- so we don't have to type it in while debugging
-	string fName = "test";
+	string fName = "T5.N0.1K.D1K"; // <- so we don't have to type it in while debugging
+	//string fName = "test";
 	//fName = getString("Please enter the file you would like to load in: ");
 
 	LinkedList<int>* data = loadData(fName, false, false);	
@@ -13,13 +13,15 @@ void mainMenu()
 	TimerSystem timer;
 
 	timer.startClock();
-	ObjectList result = aprioriAlgorithm(data, 500, 10);
+	ObjectList result = aprioriAlgorithm(data, 1000, 25);
 	double time = timer.getTime();
 
-	result.display();
+
+
+	writeToFile(result);
 
 	cout 
-		<< "Done. Operation took " << time << "s to complete.";
+		<< "Done. Operation took " << time << "s to complete.\nResults are in 'result.txt'";
 
 	pause();
 
@@ -41,7 +43,7 @@ LinkedList<int>* loadData(string fName, bool showMessages, bool showResults)
 	}
 	else
 	{
-		int numTrans = 500;
+		int numTrans = 1000;
 
 		if (numTrans == -1)
 		{
@@ -145,4 +147,26 @@ bool isDigit(char c)
 	// lol
 
 	return ('0' <= c && c <= '9');
+}
+
+void writeToFile(ObjectList theResult)
+{
+	ofstream of;
+	of.open("results.txt");
+	if (!of.fail())
+	{
+		for (int i = 0; i < theResult.size(); i++)
+		{
+			for (int j = 0; j < theResult[i].size; j++)
+			{
+				of << theResult[i].data[j] << " ";
+			}
+			of << endl;
+		}
+	}
+	else
+	{
+		cout << "File not found, exiting..." << endl;
+		exit(1);
+	}
 }

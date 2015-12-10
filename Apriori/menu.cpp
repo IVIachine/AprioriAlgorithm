@@ -18,7 +18,7 @@ Menu::~Menu()
 
 void Menu::main()
 {
-	printl("Please select and option from the list below.");
+	//printl("Please select and option from the list below.");
 
 	getInt();
 
