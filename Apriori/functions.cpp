@@ -33,15 +33,15 @@ void mainMenu()
 			<< "The file, " << fName << ", was found." << "(" << numTrans / 1000 << "K transactions) \n"
 			<< "\nLoading data. \n";
 
-		int cur, next, item;
+		int trans, item;
 
 		// Load data and insert into lists
 		while (!file.eof())
 		{
-			file >> cur;
+			file >> trans;
 			file >> item;
 
-			transactions[cur - 1].insertSorted(item);
+			transactions[trans - 1].insertSorted(item);
 		}
 
 
