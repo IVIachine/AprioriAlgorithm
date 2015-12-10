@@ -1,7 +1,5 @@
 #include "menu.h"
 
-#pragma region Menu
-
 #pragma region Constructor/Destructor
 
 Menu::Menu()
@@ -15,6 +13,8 @@ Menu::~Menu()
 }
 
 #pragma endregion
+
+#pragma region Menu
 
 void Menu::main()
 {

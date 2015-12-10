@@ -1,5 +1,7 @@
 #include "helper.h"
 
+using namespace std;
+
 class Menu
 {
 private:
@@ -21,4 +23,5 @@ public:
 
 	void	main();
 	void	load();
+
 };
