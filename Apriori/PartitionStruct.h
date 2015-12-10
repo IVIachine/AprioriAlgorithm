@@ -9,42 +9,44 @@ using namespace std;
 
 struct PartitionStruct
 {
-	int theFrequency;
-	int *myArray;
-	int arraySize;
+	int 
+		frequency,
+		size;
+
+	int* data;
 	
 	PartitionStruct()
 	{
-		theFrequency = 0;
-		arraySize = 0;
-		myArray = NULL;
+		frequency = 0;
+		size = 0;
+		data = NULL;
 	}
 	
 	~PartitionStruct()
 	{
-		if (arraySize != 0)
+		if (size != 0)
 		{
-			myArray = NULL;
-			delete[] myArray;
+			data = NULL;
+			delete[] data;
 		}
 
 
-      arraySize = 0;
-      theFrequency = 0;
+      size = 0;
+      frequency = 0;
 
 	}
 };
 
 inline bool operator ==(PartitionStruct lhs, PartitionStruct rhs)
 {
-	return lhs.myArray == rhs.myArray;
+	return lhs.data == rhs.data;
 }
 
 inline ostream& operator<<(ostream& out, PartitionStruct p)
 {
-	for (int i = 0; i < p.arraySize; i++)
+	for (int i = 0; i < p.size; i++)
 	{
-		out << p.myArray[i] << " ";
+		out << p.data[i] << " ";
 	}
 	out << endl;
 	return out;

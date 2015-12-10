@@ -29,13 +29,13 @@ class ObjectList
 		{
 			 int i;
 
-			mData.arraySize = data.arraySize;
-			mData.theFrequency = data.theFrequency;
+			mData.size = data.size;
+			mData.frequency = data.frequency;
 
-			mData.myArray = new int[mData.arraySize];
+			mData.data = new int[mData.size];
 
-			for (i = 0; i < data.arraySize; i++)
-				mData.myArray[i] = data.myArray[i];
+			for (i = 0; i < data.size; i++)
+				mData.data[i] = data.data[i];
 
 			mNext = NULL;
 		}
@@ -44,8 +44,8 @@ class ObjectList
       {
 			 Node *tmp;
 
-			 if (mData.arraySize != 0)
-					delete[] mData.myArray;
+			 if (mData.size != 0)
+					delete[] mData.data;
 
 			 tmp = mNext;
 			 while (tmp != NULL)

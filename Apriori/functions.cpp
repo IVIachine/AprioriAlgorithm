@@ -25,11 +25,12 @@ LinkedList<int> reverseFunction(ObjectList& list)
 
 	for (int i = 0; i < list.size(); i++)
 	{
-		for (int j = 0; j < list.getData(i).arraySize; j++)
+		for (int j = 0; j < list[i].size; j++)
 		{
-			int tmp = list.getData(i).myArray[j];
+			int tmp = list[i].data[j];
 			result.insertSorted(tmp);
 		}
 	}
+
 	return result;
 }

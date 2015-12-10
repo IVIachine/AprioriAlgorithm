@@ -2,6 +2,8 @@
 
 int main()
 {
+	srand(time(NULL));
+
 	int K = 3;
 	LinkedList<int> data = LinkedList<int>();
 
@@ -10,7 +12,6 @@ int main()
 	{
 		data.insertSorted(1 + rand() % num);
 	}
-
 
 	//mainMenu();
 	ObjectList list = genAll(data, K);
