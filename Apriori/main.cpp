@@ -21,7 +21,7 @@ int main()
 
 	//list2.display();
 
-	int i = getInt();
+	//int i = getInt();
 
 	mainMenu();
 
