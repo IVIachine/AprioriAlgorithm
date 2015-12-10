@@ -8,6 +8,13 @@ void mainMenu()
 
 	//fName = getString("Please enter the file you would like to load in: ");
 
+	LinkedList<int>* trans = loadData(fName, true);
+
+	delete[] trans;
+}
+
+LinkedList<int>* loadData(string fName, bool showDebugInfo)
+{
 	ifstream file("dataset/" + fName + ".txt");
 
 	if (!file.good())
@@ -24,13 +31,16 @@ void mainMenu()
 			return;
 		}
 
-		LinkedList<int> *transactions = new LinkedList<int>[numTrans](); //Array of linked lists
+		LinkedList<int>* transactions = new LinkedList<int>[numTrans](); //Array of linked lists
 
-		// Display that the file was found
-		// and how many entries it has
-		cout
-			<< "The file, " << fName << ", was found." << "(" << numTrans / 1000 << "K transactions) \n"
-			<< "\nLoading data. \n\n";
+		if (showDebugInfo)
+		{
+			// Display that the file was found
+			// and how many entries it has
+			cout
+				<< "The file, " << fName << ", was found." << "(" << numTrans / 1000 << "K transactions) \n"
+				<< "\nLoading data. \n\n";
+		}
 
 		int trans, item;
 
@@ -43,20 +53,23 @@ void mainMenu()
 			transactions[trans - 1].insertSorted(item);
 		}
 
-		cout
-			<< "Loading complete. Displaying results... \n\n";
-
-		// Print everything when it's complete
-		for (int i = 0; i < numTrans; i++)
+		if (showDebugInfo)
 		{
-			cout << "[" << i + 1 << "] ";
-			transactions[i].display();
+			cout << "Loading complete. Displaying results... \n\n";
+
+			// Print everything when it's complete
+			for (int i = 0; i < numTrans; i++)
+			{
+				cout << "[" << i + 1 << "] ";
+				transactions[i].display();
+			}
+
+			pause();
 		}
 
-
-		pause();
 		file.close();
-		delete[] transactions;
+		
+		return transactions;
 	}
 }
 
