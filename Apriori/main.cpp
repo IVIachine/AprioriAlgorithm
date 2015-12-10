@@ -21,8 +21,7 @@ int main()
 
 	//list2.display();
 
-	//Menu menu = Menu();
-	//menu.main();
 	mainMenu();
+
 	return 0;
 } 

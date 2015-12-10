@@ -4,10 +4,9 @@
 
 void mainMenu()
 {
-	string fName = "T5.N0.1K.D1K"; // <- so we don't have to type it in while debugging
+	string fName = "T5.N0.1K.D10K"; // <- so we don't have to type it in while debugging
 
-	//print("Please enter the file you would like to load in: ");
-	//getline(cin, fName);
+	//fName = getString("Please enter the file you would like to load in: ");
 
 	ifstream file("dataset/" + fName + ".txt");
 
