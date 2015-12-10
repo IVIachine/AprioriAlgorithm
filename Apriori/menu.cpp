@@ -1,5 +1,86 @@
 #include "menu.h"
 
+#pragma region Helper Functions
+
+void clear()
+{
+	system("cls");
+}
+
+void errorMessage(string message)
+{
+	clear();
+
+	cout << message;
+
+	pause();
+
+	exit(0);
+}
+
+void errorMessage(string message, FUNC_PTR fallback)
+{
+	clear();
+
+	cout << message;
+
+	pause();
+
+	execute(fallback);
+}
+
+void execute(FUNC_PTR func)
+{
+	func();
+}
+
+int getInt()
+{
+	string str;
+	getline(cin, str);
+
+	if (isNumber(str))
+	{
+		return stoi(str);
+	}
+	
+	errorMessage("Please try again, and, this time, enter a number.");
+
+	return 0;
+}
+
+bool isNumber(string str)
+{
+	for (auto i = str.begin(); i != str.end(); i++)
+	{
+		if (!isdigit(*i))
+			return false;
+	}
+
+	return true;
+}
+
+void pause()
+{
+	print("\n\n");
+	system("pause");
+}
+
+void print(char* text)
+{
+	printf(text);
+}
+
+void printl(char* text)
+{
+	printf("\n");
+	printf(text);
+}
+
+#pragma endregion
+
+#pragma region Menu
+
 #pragma region Constructor/Destructor
 
 Menu::Menu()
@@ -14,63 +95,13 @@ Menu::~Menu()
 
 #pragma endregion
 
-#pragma region Private Functions
-
-void Menu::clear()
-{
-	system("cls");
-}
-
-void Menu::errorMessage(string message)
-{
-	clear();
-
-	cout << message;
-
-	pause();
-
-	exit(0);
-}
-
-int Menu::getSelection(string str)
-{
-
-}
-
-bool Menu::isNumber(string str)
-{
-	for (auto i = str.begin(); i != str.end(); i++)
-	{
-		if (!isdigit(*i))
-			return false;
-	}
-
-	return true;
-}
-
-void Menu::pause()
-{
-	system("pause");
-}
-
-void Menu::print(char* text)
-{
-	printf(text);
-}
-
-void Menu::printl(char* text)
-{
-	printf("\n");
-	printf(text);
-}
-
-#pragma endregion
-
-#pragma region Public Functions
-
 void Menu::main()
 {
 	printl("Please select and option from the list below.");
+
+	getInt();
+
+	pause();
 }
 
 void Menu::load()

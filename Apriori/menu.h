@@ -5,30 +5,32 @@
 
 using namespace std;
 
+typedef void(*FUNC_PTR)(void);
+void execute(FUNC_PTR func);
+
+void	clear();
+void	errorMessage(string message);
+void	errorMessage(string message, FUNC_PTR fallBack);
+int		getInt();
+bool	isNumber(string str);
+void	pause();
+void	print(char* text);
+void	printl(char* text);
+
 class Menu
 {
 private:
-	typedef void(*Function) (void);
-
 	struct Option
 	{
 		string mText;
-		Function mFunc;
+		FUNC_PTR mFunc;
 
-		Option(string text, Function func)
+		Option(string text, FUNC_PTR func)
 		{
 			mText = text;
 			mFunc = func;
 		}
 	};
-
-	void	clear();
-	void	errorMessage(string message);
-	int		getSelection(string str);
-	bool	isNumber(string str);
-	void	pause();
-	void	print(char* text);
-	void	printl(char* text);
 
 public:
 	Menu();
@@ -36,5 +38,4 @@ public:
 
 	void	main();
 	void	load();
-
 };

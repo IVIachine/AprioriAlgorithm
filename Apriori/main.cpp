@@ -23,8 +23,6 @@ int main()
 
 	Menu menu = Menu();
 	menu.main();
-	
-	system("pause");
 
 	return 0;
 } 
