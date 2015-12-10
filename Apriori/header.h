@@ -9,4 +9,4 @@ using namespace std;
 
 void mainMenu();
 
-LinkedList<int> reverseFunction(ObjectList& list, int k);
+LinkedList<int> reverseFunction(ObjectList* list, int k);

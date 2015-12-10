@@ -15,7 +15,7 @@ int main()
 	//mainMenu();
 	ObjectList list = genAll(data, K);
 
-	reverseFunction(list, K);
+	reverseFunction(&list, K);
 
 	//list2.display();
 	
