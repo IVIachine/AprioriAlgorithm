@@ -23,11 +23,15 @@ struct PartitionStruct
 	~PartitionStruct()
 	{
 		if (arraySize != 0)
-			delete [] myArray;
+		{
+			myArray = NULL;
+			delete[] myArray;
+		}
+
 
       arraySize = 0;
       theFrequency = 0;
-      myArray = NULL;
+
 	}
 };
 

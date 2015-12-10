@@ -15,9 +15,8 @@ int main()
 	//mainMenu();
 	ObjectList list = genAll(data, K);
 
-	reverseFunction(list, K);
-
-	//list2.display();
+	LinkedList<int> list2 = reverseFunction(list);
+	list2.display();
 	
 	system("pause");
 

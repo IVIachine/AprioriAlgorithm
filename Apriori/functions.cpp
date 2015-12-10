@@ -19,11 +19,18 @@ void mainMenu()
 	}
 }
 
-LinkedList<int> reverseFunction(ObjectList& list, int k)
+LinkedList<int> reverseFunction(ObjectList& list)
 {
 	LinkedList<int> result;
 
-	cout << list.size(); 
+	for (int i = 0; i < list.size(); i++)
+	{
+		for (int j = 0; j < list.getData(i).arraySize; j++)
+		{
+			int tmp = list.getData(i).myArray[j];
+			result.insertSorted(tmp);
+		}
+	}
 
 	return result;
 }
