@@ -30,7 +30,7 @@ void mainMenu()
 		// and how many entries it has
 		cout
 			<< "The file, " << fName << ", was found." << "(" << numTrans / 1000 << "K transactions) \n"
-			<< "\nLoading data. \n";
+			<< "\nLoading data. \n\n";
 
 		int trans, item;
 
@@ -43,6 +43,8 @@ void mainMenu()
 			transactions[trans - 1].insertSorted(item);
 		}
 
+		cout
+			<< "Loading complete. Displaying results... \n\n";
 
 		// Print everything when it's complete
 		for (int i = 0; i < numTrans; i++)
