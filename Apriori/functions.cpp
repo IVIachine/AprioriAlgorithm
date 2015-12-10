@@ -19,21 +19,25 @@ void mainMenu()
 	}
 }
 
-LinkedList<int> reverseFunction(ObjectList* list, int k)
+LinkedList<int> reverseFunction(ObjectList* list)
 {
 	LinkedList<int> result;
 	
-	int x = list->getData(0).myArray[0];
+	int lSize = list->size();
+	
+	cout
+		<< "\n"
+		<< "List size: " << lSize
+		<< "\n";
 
-	int i, j;
-	for (i = 0; i < list->size(); i++)
+	for (int i = 0; i < list->size(); i++)
 	{
-		
+		int aSize = list->getData(i).arraySize;
 
-		for (j = 0; j < k; j++)
-		{
-			
-		}
+		cout
+			<< "\n"
+			<< "Array " << i << " size: " << aSize
+			<< "\n";
 	}
 
 	return result;
