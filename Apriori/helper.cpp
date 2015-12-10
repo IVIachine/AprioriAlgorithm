@@ -5,7 +5,7 @@ void clear()
 	system("cls");
 }
 
-int getInt(string message = "Requesting integer: ")
+int getInt(string message)
 {
 	string str;
 	
@@ -22,7 +22,7 @@ int getInt(string message = "Requesting integer: ")
 	return stoi(str);
 }
 
-string getString(string message = "Requesting string: ")
+string getString(string message)
 {
 	string str = "";
 	

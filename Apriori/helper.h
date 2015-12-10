@@ -10,8 +10,8 @@ using namespace std;
 typedef void(*FUNC_PTR)(void);
 
 void	clear();
-int		getInt(string message);
-string	getString(string message);
+int		getInt(string message = "Requesting integer: ");
+string	getString(string message = "Requesting string: ");
 bool	isNumber(string str);
 void	pause();
 
