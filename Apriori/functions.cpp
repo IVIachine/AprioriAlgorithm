@@ -31,6 +31,5 @@ LinkedList<int> reverseFunction(ObjectList& list)
 			result.insertSorted(tmp);
 		}
 	}
-
 	return result;
 }

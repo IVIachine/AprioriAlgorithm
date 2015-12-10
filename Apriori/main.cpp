@@ -16,6 +16,7 @@ int main()
 	ObjectList list = genAll(data, K);
 
 	LinkedList<int> list2 = reverseFunction(list);
+
 	list2.display();
 	
 	system("pause");
