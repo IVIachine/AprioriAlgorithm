@@ -1,5 +1,6 @@
 #ifndef OBJECTLIST
 #define OBJECTLIST
+
 #include "PartitionStruct.h"
 using namespace std; 
 

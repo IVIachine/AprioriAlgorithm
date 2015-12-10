@@ -1,5 +1,7 @@
 #include "header.h"
 
+#include "menu.h"
+
 int main()
 {
 	srand(time(NULL));
@@ -13,12 +15,14 @@ int main()
 		data.insertSorted(1 + rand() % num);
 	}
 
-	//mainMenu();
 	ObjectList list = genAll(data, K);
 
 	LinkedList<int> list2 = reverseFunction(list);
 
-	list2.display();
+	//list2.display();
+
+	Menu menu = Menu();
+	menu.main();
 	
 	system("pause");
 

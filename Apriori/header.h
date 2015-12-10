@@ -8,8 +8,5 @@
 
 using namespace std;
 
-
-void mainMenu();
-
 LinkedList<int> reverseFunction(ObjectList& list);
 
