@@ -8,10 +8,10 @@ using namespace std;
 class Menu
 {
 private:
+	typedef void(*Function) (void);
+
 	struct Option
 	{
-		typedef void (*Function) (void);
-
 		string mText;
 		Function mFunc;
 
