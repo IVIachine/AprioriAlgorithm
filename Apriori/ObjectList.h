@@ -1,6 +1,7 @@
 #ifndef OBJECTLIST
 #define OBJECTLIST
 
+#include "helper.h"
 #include "PartitionStruct.h"
 using namespace std; 
 
@@ -75,8 +76,7 @@ public:
 	void setData(int index, PartitionStruct data);
 
 	void clear();
-	void display();
-	void display(int i);
+	void display(int offset);
 	void insertUnsorted(const PartitionStruct &data);
 
 	bool isEmpty();

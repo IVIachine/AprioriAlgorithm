@@ -200,7 +200,7 @@ void LinkedList<T>::display()
 	cout << "{";
 	while (tmp != NULL)
 	{
-		cout << tmp->mData << (tmp != mTail ? ", " : "}");;
+		cout << tmp->mData << (tmp != mTail ? ", " : "}");
 		tmp = tmp->mNext;
 	}
 	cout << "\n\n";

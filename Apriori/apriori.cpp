@@ -1,7 +1,7 @@
 #include "apriori.h"
 
 
-ObjectList aprioriGen(LinkedList<int> data, int k, bool showDebugInfo)
+ObjectList aprioriGen(LinkedList<int> data, int k)
 {
 	int n = data.size();
 	int *combination = new int[k]();
@@ -58,7 +58,7 @@ ObjectList aprioriGen(LinkedList<int> data, int k, bool showDebugInfo)
 	return result;
 }
 
-LinkedList<int> reverseFunction(ObjectList& list, bool showDebugInfo)
+LinkedList<int> reverseFunction(ObjectList& list)
 {
 	LinkedList<int> result;
 
@@ -71,20 +71,10 @@ LinkedList<int> reverseFunction(ObjectList& list, bool showDebugInfo)
 		}
 	}
 
-	if (showDebugInfo)
-	{
-		cout
-			<< "\n"
-			<< tab() << "Reverse: "
-			<< "\n";
-
-		//result.display();
-	}
-
 	return result;
 }
 
-LinkedList<int> getF1(LinkedList<int>* list, int size, bool showDebugInfo)
+LinkedList<int> getF1(LinkedList<int>* list, int size)
 {
 	LinkedList<int> result = LinkedList<int>();
 
@@ -96,23 +86,13 @@ LinkedList<int> getF1(LinkedList<int>* list, int size, bool showDebugInfo)
 		}
 	}
 
-	if (showDebugInfo)
-	{
-		cout
-			<< "\n"
-			<< tab() << "F1: "
-			<< "\n";
-
-		//result.display();
-	}
-
 	return result;
 }
 
 ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showDebugInfo)
 {
 	ObjectList C, lastC;
-	LinkedList<int> f1 = getF1(data, size, showDebugInfo);
+	LinkedList<int> f1 = getF1(data, size);
 	LinkedList<int> F = f1;
 
 	int k = 0;
@@ -122,32 +102,29 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 		k++;
 
 		// All possible combinations within the entire set
-		C = aprioriGen(F, k, showDebugInfo);
-
-		if (showDebugInfo)
-		{
-			cout
-				<< "\n"
-				<< tab() << "Combinations generated for C."
-				<< "\n";
-
-			C.display();
-		}
+		C = aprioriGen(F, k);
 
 		if (C.isEmpty())
 		{
 			return lastC;
 		}
 
-		if (showDebugInfo)
-		cout 
-			<< "Iteration [" << k << "] begin\n";
+		cout
+			<< space(1) << "K: " << k
+			<< "\n"
+			<< line(' ', 7, false) << line('*', 20)
+			<< "\n\n"
+			<< space(2) << "Generating all combinations of size [" << k << "]";
 
+		TimerSystem timer;
+		double time;
+
+		timer.startClock();
 
 		for (int i = 0; i < size; i++)
 		{
 			// All possible combinations within a transaction
-			ObjectList c = aprioriGen(data[i], k, showDebugInfo);
+			ObjectList c = aprioriGen(data[i], k);
 
 			// Iterate through all subsets in c
 			for (int j = 0; j < c.size(); j++)
@@ -172,16 +149,27 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 				fk.insertUnsorted(C[i]);
 			}
 		}
-		
+
 		F.clear();
-		F = reverseFunction(fk, showDebugInfo);
-		
-		if(showDebugInfo)
-		cout 
-			<< "\n" 
-			<< tab() << "Size of C: " << C.size() 
+		F = reverseFunction(fk);
+
+		time = timer.getTime();
+
+		if (showDebugInfo)
+		{
+			cout
+				<< "\n"
+				<< space(3, '.') << "Number of combinations generated: " << C.size()
+				<< "\n\n";
+
+			C.display(3);
+		}
+
+		cout
+			<< space(2) << "Operation took (" << time << ") seconds to complete."
 			<< "\n\n"
-			<< "Iteration [" << k << "] complete\n\n";
+			<< line(' ', 7, false) << line('*', 20)
+			<< "\n";
 		
 		lastC = C;	
 		

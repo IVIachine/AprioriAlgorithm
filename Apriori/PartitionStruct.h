@@ -39,11 +39,12 @@ struct PartitionStruct
 
 inline ostream& operator<<(ostream& out, PartitionStruct p)
 {
+	cout << "{";
 	for (int i = 0; i < p.size; i++)
 	{
-		out << p.data[i] << " ";
+		out << p.data[i] << (i < p.size - 1 ? ", " : "}\n");
 	}
-	out << endl;
+
 	return out;
 }
 

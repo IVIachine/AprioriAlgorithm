@@ -109,7 +109,7 @@ void ObjectList::clear()
 *  Purpose:  To show the content of the list
 Cite: function by Wei
 *****************************************************************************/
-void ObjectList::display()
+void ObjectList::display(int offset)
 {
 	Node *tmp;
 
@@ -122,29 +122,9 @@ void ObjectList::display()
 	tmp = mHead;
 	while (tmp != NULL)
 	{
-		cout << tmp->mData;
+		cout << space(offset) << tmp->mData;
 		tmp = tmp->mNext;
 	}
-	cout << endl;
-}
-
-/*      Pre:  The list is instantiated
-*     Post:  The entire list is displayed on the screen
-*  Purpose:  To show the content of the list
-Cite: function by Wei
-*****************************************************************************/
-void ObjectList::display(int i)
-{
-	cout
-		<< "F: " << getData(i).frequency << "\n"
-		<< "S: " << getData(i).size << "\n"
-		<< "D: {";
-
-	for (int m = 0; m < getData(i).size; m++)
-	{
-		cout << getData(i).data[m] << (m != getData(i).size - 1 ? ", " : "");
-	}
-	cout << "}\n";
 }
 
 /*      Pre:  The list is instantiated

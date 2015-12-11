@@ -31,6 +31,22 @@ string getString(string message)
 	return str;
 }
 
+string line(char c, int length, bool newLine)
+{
+	string txt = "";
+
+	if (newLine)
+		cout << endl;
+
+	for (int i = 0; i < length; i++)
+		txt += c;
+
+	if (newLine)
+		cout << endl;
+
+	return txt;
+}
+
 bool isNumber(string str)
 {
 	for (auto i = str.begin(); i != str.end(); i++)
@@ -48,14 +64,24 @@ void pause()
 	system("pause");
 }
 
-string tab(int num)
+string space(int numTabs)
 {
-	string tabs = "";
+	string spacing = "";
 
-	for (int i = 0; i < num; i++)
-		tabs += "\t";
+	for (int i = 0; i < numTabs; i++)
+		spacing += "\t";
 
-	return tabs;
+	return spacing;
+}
+
+string space(int numTabs, char c)
+{
+	string spacing = "";
+
+	for (int i = 0; i < numTabs * 8; i++)
+		spacing += c;
+
+	return spacing;
 }
 
 void showProgress(float progress, int maxWidth)

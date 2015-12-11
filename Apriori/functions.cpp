@@ -15,11 +15,11 @@ void mainMenu(bool isStub, bool showDebugInfo)
 		min = 10;
 
 		cout
-			<< "Starting test run."
+			<< "Running in debug mode."
+			<< "\n\n"
+			<< space() << "Program will use '" << fileFormat(fName) << "'."
 			<< "\n"
-			<< tab() << "Program will use '" << fileFormat(fName) << "'."
-			<< "\n"
-			<< tab() << "The test file has " << size << " transactions. A minumum support of " << min << " will be used."
+			<< space() << "The test file has " << size << " transactions. A minumum support of " << min << " will be used."
 			<< "\n";
 	}
 	else
@@ -32,29 +32,32 @@ void mainMenu(bool isStub, bool showDebugInfo)
 	TimerSystem timer;
 	double time;
 
+	cout.precision(5);
+
 	cout
 		<< "\n"
-		<< "Loading data..."
-		<< "\n\n";
+		<< "Loading data... ";
 
 	timer.startClock();
 	LinkedList<int>* data = loadData(fName, size, isStub, showDebugInfo);
 	time = timer.getTime();
 	
 	cout
-		<< tab() << "Done. Operation took " << time << "s to complete."
-		<< "\n\n";
+		<< "Done."
+		<< "\n"
+		<< "Operation took (" << time << ") seconds to complete."
+		<< "\n\n\n";
 
 	cout
-		<< "Running Apriori Algorithm..."
-		<< "\n\n";
+		<< "Running Apriori Algorithm.";
 
 	timer.startClock();
 	ObjectList result = aprioriAlgorithm(data, size, min, showDebugInfo);
 	time = timer.getTime();
 
-	cout 
-		<< tab() << "Done. Operation took " << time << "s to complete."
+	cout
+		<< "\n\n"
+		<< "Operation took (" << time << ") seconds to complete."
 		<< "\n\n"
 		<< "Results can be found in 'result.txt'";
 
@@ -74,6 +77,7 @@ LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInf
 	{
 		if (showDebugInfo)
 		cout
+			<< space()
 			<< "The requested file could not be found.";
 
 		pause();
@@ -98,7 +102,7 @@ LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInf
 			// and how many entries it has
 			if (showDebugInfo)
 			cout
-				<< "The file, " << fName << ", was found." << "(" << numTrans / 1000 << "K transactions) \n"
+				<< space() << "The file, " << fName << ", was found." << "(" << numTrans / 1000 << "K transactions) \n"
 				<< "\nLoading data. \n\n";
 		}
 
@@ -122,7 +126,7 @@ LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInf
 			// Print everything when it's complete
 			for (int i = 0; i < numTrans; i++)
 			{
-				cout << "[" << i + 1 << "] ";
+				cout << space() << "[" << i + 1 << "] ";
 				transactions[i].display();
 			}
 		}

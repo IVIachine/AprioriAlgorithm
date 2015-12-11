@@ -20,7 +20,7 @@ ObjectList testAprioriGen(int N, int K, int minNum, int maxNum)
 
 	ObjectList list = aprioriGen(data, K);
 
-	list.display();
+	list.display(0);
 
 	return list;
 }
@@ -39,7 +39,7 @@ LinkedList<int> testReverseFunction(ObjectList input)
 	return list;
 }
 
-int main()
+int _main()
 {
 	bool
 		isStub = true,
