@@ -17,29 +17,46 @@ void mainMenu(bool isStub, bool showDebugInfo)
 		cout
 			<< "Starting test run."
 			<< "\n"
-			<< "Program will use '" << fileFormat(fName) << "'."
+			<< tab() << "Program will use '" << fileFormat(fName) << "'."
 			<< "\n"
-			<< "The test file has " << size << " transactions, and a minumum support of " << min << " will be used."
+			<< tab() << "The test file has " << size << " transactions. A minumum support of " << min << " will be used."
 			<< "\n";
 	}
 	else
 	{
-		fName = getString("Please enter the file you would like to load in: "); //T5.N0.1K.D1K
+		fName = getString("Please enter the file you would like to load in: ");
 		size = getTransNum(fName);
 		min = getInt("Please enter the minimum support: ");
 	}
 
+	TimerSystem timer;
+	double time;
+
 	cout
 		<< "\n"
-		<< "Working...";
+		<< "Loading data..."
+		<< "\n\n";
 
+	timer.startClock();
 	LinkedList<int>* data = loadData(fName, size, isStub, showDebugInfo);
+	time = timer.getTime();
+	
+	cout
+		<< tab() << "Done. Operation took " << time << "s to complete."
+		<< "\n\n";
 
-	TimerSystem timer;
+	cout
+		<< "Running Apriori Algorithm..."
+		<< "\n\n";
 
 	timer.startClock();
 	ObjectList result = aprioriAlgorithm(data, size, min, showDebugInfo);
-	double time = timer.getTime();
+	time = timer.getTime();
+
+	cout 
+		<< tab() << "Done. Operation took " << time << "s to complete."
+		<< "\n\n"
+		<< "Results can be found in 'result.txt'";
 
 
 	writeToFile(result);
@@ -47,13 +64,14 @@ void mainMenu(bool isStub, bool showDebugInfo)
 	if (showDebugInfo)
 	{
 		cout
-			<< "Results: "
+			<< "\n\n"
+			<< "showDebugInfo = true"
+			<< "\n"
+			<< "Displaying Results: "
 			<< "\n";
 
 		result.display();
 	}
-
-	cout << "Done. Operation took " << time << "s to complete.\nResults are in 'result.txt'";
 
 	pause();
 

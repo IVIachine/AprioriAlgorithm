@@ -14,7 +14,7 @@ int		getInt(string message = "Requesting integer: ");
 string	getString(string message = "Requesting string: ");
 bool	isNumber(string str);
 void	pause();
-string	tab(int num = 0);
+string	tab(int num = 1);
 void	showProgress(float progress, int maxWidth);
 
 #endif // !_HELPER_H_

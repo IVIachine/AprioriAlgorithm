@@ -39,11 +39,11 @@ LinkedList<int> testReverseFunction(ObjectList input)
 	return list;
 }
 
-int _main()
+int main()
 {
 	bool
 		isStub = true,
-		showDebugInfo = true;
+		showDebugInfo = false;
 
 	mainMenu(isStub, showDebugInfo);
 

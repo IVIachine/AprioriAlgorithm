@@ -115,12 +115,8 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 	LinkedList<int> f1 = getF1(data, size, showDebugInfo);
 	LinkedList<int> F = f1;
 
-	if(showDebugInfo)
-	cout 
-		<< "Mining Data..."
-		<< "\n\n";
-
 	int k = 0;
+
 	while(!F.isEmpty())
 	{
 		k++;
@@ -187,7 +183,7 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 			<< "\n\n"
 			<< "Iteration [" << k << "] complete\n\n";
 		
-		lastC = C;
+		lastC = C;	
 		
 	}
 
