@@ -48,9 +48,7 @@ void mainMenu(bool isStub, bool showDebugInfo)
 		<< "Operation took (" << time << ") seconds to complete."
 		<< "\n\n\n";
 
-	cout
-		<< "Running Apriori Algorithm"
-		<< (showDebugInfo ? "" : "... ");
+	cout << "Running Apriori Algorithm...";
 
 	timer.startClock();
 	ObjectList result = aprioriAlgorithm(data, size, min, showDebugInfo);
