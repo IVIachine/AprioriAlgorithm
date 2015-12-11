@@ -1,16 +1,16 @@
 #include "apriori.h"
 
 
-ObjectList aprioriGen(LinkedList<int> data, int k)
+ObjectList aprioriGen(LinkedList<int> data, int k, bool showDebugInfo)
 {
 	int n = data.size();
 	int *combination = new int[k]();
 	int *tmp = new int[k];
 	PartitionStruct myStruct = PartitionStruct();
-	ObjectList theData = ObjectList();
+	ObjectList result = ObjectList();
 
 	if (k > n)
-		return theData;
+		return result;
 
 
 	int r = 0;
@@ -32,7 +32,7 @@ ObjectList aprioriGen(LinkedList<int> data, int k)
 				}
 				
 				//myStruct.frequency = 0;
-				theData.insertUnsorted(myStruct);	
+				result.insertUnsorted(myStruct);	
 				myStruct.data = NULL;
 				delete[] myStruct.data;
 				index++;
@@ -54,10 +54,11 @@ ObjectList aprioriGen(LinkedList<int> data, int k)
 			}
 		}
 	}
-	return theData;
+
+	return result;
 }
 
-LinkedList<int> reverseFunction(ObjectList& list)
+LinkedList<int> reverseFunction(ObjectList& list, bool showDebugInfo)
 {
 	LinkedList<int> result;
 
@@ -70,52 +71,87 @@ LinkedList<int> reverseFunction(ObjectList& list)
 		}
 	}
 
+	if (showDebugInfo)
+	{
+		cout
+			<< "\n"
+			<< tab() << "Reverse: "
+			<< "\n";
+
+		//result.display();
+	}
+
 	return result;
 }
 
-LinkedList<int> getF1(LinkedList<int>* list, int size)
+LinkedList<int> getF1(LinkedList<int>* list, int size, bool showDebugInfo)
 {
-	LinkedList<int> tmp = LinkedList<int>();
+	LinkedList<int> result = LinkedList<int>();
 
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < list[i].size(); j++)
 		{
-			tmp.insertSorted(list[i][j]);
+			result.insertSorted(list[i][j]);
 		}
 	}
 
-	return tmp;
+	if (showDebugInfo)
+	{
+		cout
+			<< "\n"
+			<< tab() << "F1: "
+			<< "\n";
+
+		//result.display();
+	}
+
+	return result;
 }
 
-ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min)
+ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showDebugInfo)
 {
 	ObjectList C, lastC;
-	LinkedList<int> f1 = getF1(data, size);
+	LinkedList<int> f1 = getF1(data, size, showDebugInfo);
 	LinkedList<int> F = f1;
 
-	cout << "Mining Data... \n\n";
+	if(showDebugInfo)
+	cout 
+		<< "Mining Data..."
+		<< "\n\n";
 
 	int k = 0;
 	while(!F.isEmpty())
 	{
 		k++;
 
-		
-
 		// All possible combinations within the entire set
-		C = aprioriGen(F, k);
+		C = aprioriGen(F, k, showDebugInfo);
+
+		if (showDebugInfo)
+		{
+			cout
+				<< "\n"
+				<< tab() << "Combinations generated for C."
+				<< "\n";
+
+			C.display();
+		}
+
 		if (C.isEmpty())
 		{
 			return lastC;
 		}
-		cout << "Iteration [" << k << "] begin\n";
+
+		if (showDebugInfo)
+		cout 
+			<< "Iteration [" << k << "] begin\n";
 
 
 		for (int i = 0; i < size; i++)
 		{
 			// All possible combinations within a transaction
-			ObjectList c = aprioriGen(data[i], k);
+			ObjectList c = aprioriGen(data[i], k, showDebugInfo);
 
 			// Iterate through all subsets in c
 			for (int j = 0; j < c.size(); j++)
@@ -142,11 +178,15 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min)
 		}
 		
 		F.clear();
-		F = reverseFunction(fk);
+		F = reverseFunction(fk, showDebugInfo);
 		
-		cout << "\n" << C.size() << "\n\n";
-
-		cout << "Iteration [" << k << "] complete\n\n";
+		if(showDebugInfo)
+		cout 
+			<< "\n" 
+			<< tab() << "Size of C: " << C.size() 
+			<< "\n\n"
+			<< "Iteration [" << k << "] complete\n\n";
+		
 		lastC = C;
 		
 	}

@@ -197,10 +197,10 @@ void LinkedList<T>::display()
 	}
 
 	tmp = mHead;
-	cout << "\n";
+	cout << "{";
 	while (tmp != NULL)
 	{
-		cout << tmp->mData << " ";
+		cout << tmp->mData << (tmp != mTail ? ", " : "}");;
 		tmp = tmp->mNext;
 	}
 	cout << "\n\n";

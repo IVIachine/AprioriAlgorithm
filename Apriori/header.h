@@ -10,9 +10,9 @@
 
 using namespace std;
 
-void mainMenu();
+void mainMenu(bool isStub,  bool showDebugInfo);
 
-LinkedList<int>* loadData(string fName, bool showMessages, bool showResults);
+LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInfo);
 
 int getTransNum(string fileName);
 

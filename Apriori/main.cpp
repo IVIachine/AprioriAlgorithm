@@ -2,7 +2,9 @@
 /*
 int main()
 {
-	mainMenu();
+	bool showDebugInfo = false;
+
+	mainMenu(showDebugInfo);
 
 	return 0;
 }

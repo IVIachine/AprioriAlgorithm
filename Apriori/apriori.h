@@ -9,12 +9,12 @@
 using namespace std;
 
 
-ObjectList aprioriGen(LinkedList<int> data, int k);
+ObjectList aprioriGen(LinkedList<int> data, int k, bool showDebugInfo = false);
 
-LinkedList<int> reverseFunction(ObjectList& list);
+LinkedList<int> reverseFunction(ObjectList& list, bool showDebugInfo = false);
 
-LinkedList<int> getF1(LinkedList<int>* list, int size);
+LinkedList<int> getF1(LinkedList<int>* list, int size, bool showDebugInfo = false);
 
-ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min);
+ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showDebugInfo = false);
 
 #endif

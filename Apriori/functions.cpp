@@ -2,24 +2,37 @@
 #include <fstream>
 #include <sstream>
 
-void mainMenu()
+void mainMenu(bool isStub, bool showDebugInfo)
 {
-	string fName = "T5.N0.1K.D1K"; // <- so we don't have to type it in while debugging
-	//string fName = "test";
-	//fName = getString("Please enter the file you would like to load in: ");
+	string fName;
+	int size;
+	int min;
+	
+	if (isStub)
+	{
+		fName = "test";
+		size = 100;
+		min = 10;
+	}
+	else
+	{
+		fName = getString("Please enter the file you would like to load in: ");
+		size = getTransNum(fName);
+		min = getInt("Please enter the minimum support: ");
+	}
 
-	LinkedList<int>* data = loadData(fName, false, false);	
+	LinkedList<int>* data = loadData(fName, size, isStub, showDebugInfo);
 
 	TimerSystem timer;
 
 	timer.startClock();
-	ObjectList result = aprioriAlgorithm(data, 1000, 25);
+	ObjectList result = aprioriAlgorithm(data, size, min, showDebugInfo);
 	double time = timer.getTime();
-
 
 
 	writeToFile(result);
 
+	if(showDebugInfo)
 	cout 
 		<< "Done. Operation took " << time << "s to complete.\nResults are in 'result.txt'";
 
@@ -28,22 +41,23 @@ void mainMenu()
 	delete[] data;
 }
 
-LinkedList<int>* loadData(string fName, bool showMessages, bool showResults)
+LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInfo)
 {
 	ifstream file("dataset/" + fName + ".txt");
 
 	if (!file.good())
 	{
+		if (showDebugInfo)
 		cout
-			<< "The requested file could not be found. Redirecting to main menu.";
+			<< "The requested file could not be found.";
 
 		pause();
 
-		mainMenu();
+		mainMenu(isStub, showDebugInfo);
 	}
 	else
 	{
-		int numTrans = 1000;
+		int numTrans = size;
 
 		if (numTrans == -1)
 		{
@@ -53,10 +67,11 @@ LinkedList<int>* loadData(string fName, bool showMessages, bool showResults)
 
 		LinkedList<int>* transactions = new LinkedList<int>[numTrans](); //Array of linked lists
 
-		if (showMessages)
+		if (showDebugInfo)
 		{
 			// Display that the file was found
 			// and how many entries it has
+			if (showDebugInfo)
 			cout
 				<< "The file, " << fName << ", was found." << "(" << numTrans / 1000 << "K transactions) \n"
 				<< "\nLoading data. \n\n";
@@ -73,18 +88,17 @@ LinkedList<int>* loadData(string fName, bool showMessages, bool showResults)
 			transactions[trans - 1].insertSorted(item);
 		}
 
-		if (showMessages)
+		if (showDebugInfo)
 		{
-			cout << "Loading complete. " << (showResults ? " Displaying results... \n\n" : "");
+			cout 
+				<< "Loading complete.  Displaying results."
+				<< "\n\n";
 
 			// Print everything when it's complete
-			if (showResults)
+			for (int i = 0; i < numTrans; i++)
 			{
-				for (int i = 0; i < numTrans; i++)
-				{
-					cout << "[" << i + 1 << "] ";
-					transactions[i].display();
-				}
+				cout << "[" << i + 1 << "] ";
+				transactions[i].display();
 			}
 		}
 
