@@ -43,7 +43,7 @@ int main()
 {
 	bool
 		isStub = true,
-		showDebugInfo = false;
+		showDebugInfo = true;
 
 	mainMenu(isStub, showDebugInfo);
 

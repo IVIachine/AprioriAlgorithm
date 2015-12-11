@@ -61,18 +61,6 @@ void mainMenu(bool isStub, bool showDebugInfo)
 
 	writeToFile(result);
 
-	if (showDebugInfo)
-	{
-		cout
-			<< "\n\n"
-			<< "showDebugInfo = true"
-			<< "\n"
-			<< "Displaying Results: "
-			<< "\n";
-
-		result.display();
-	}
-
 	pause();
 
 	delete[] data;
