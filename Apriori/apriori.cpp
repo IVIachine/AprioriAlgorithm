@@ -109,6 +109,7 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 			return lastC;
 		}
 
+		if (showDebugInfo)
 		cout
 			<< space(1) << "K: " << k
 			<< "\n"
@@ -156,10 +157,6 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 		time = timer.getTime();
 
 		if (showDebugInfo)
-		{
-			C.display(3);
-		}
-
 		cout
 			<< space(2) << "Number of combinations generated: " << C.size()
 			<< "\n\n"
