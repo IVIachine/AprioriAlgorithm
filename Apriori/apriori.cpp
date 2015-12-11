@@ -157,15 +157,12 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 
 		if (showDebugInfo)
 		{
-			cout
-				<< "\n"
-				<< space(3, '.') << "Number of combinations generated: " << C.size()
-				<< "\n\n";
-
 			C.display(3);
 		}
 
 		cout
+			<< space(2) << "Number of combinations generated: " << C.size()
+			<< "\n\n"
 			<< space(2) << "Operation took (" << time << ") seconds to complete."
 			<< "\n\n"
 			<< line(' ', 7, false) << line('*', 20)
