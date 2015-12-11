@@ -11,9 +11,7 @@ int getInt(string message)
 	
 	do
 	{
-		cout 
-			<< endl 
-			<< message;
+		cout << message;
 
 		getline(cin, str);
 
@@ -26,9 +24,7 @@ string getString(string message)
 {
 	string str = "";
 	
-	cout
-		<< endl
-		<< message;
+	cout << message;
 
 	getline(cin, str);
 	

@@ -39,7 +39,7 @@ LinkedList<int> testReverseFunction(ObjectList input)
 	return list;
 }
 
-int main()
+int _main()
 {
 	bool
 		isStub = true,

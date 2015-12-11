@@ -1,11 +1,12 @@
 #include "header.h"
-/*
+
 int main()
 {
-	bool showDebugInfo = false;
+	bool
+		isStub = false,
+		showDebugInfo = false;
 
-	mainMenu(showDebugInfo);
+	mainMenu(isStub, showDebugInfo);
 
 	return 0;
 }
-*/

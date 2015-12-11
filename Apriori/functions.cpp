@@ -13,13 +13,25 @@ void mainMenu(bool isStub, bool showDebugInfo)
 		fName = "test";
 		size = 100;
 		min = 10;
+
+		cout
+			<< "Starting test run."
+			<< "\n"
+			<< "Program will use '" << fileFormat(fName) << "'."
+			<< "\n"
+			<< "The test file has " << size << " transactions, and a minumum support of " << min << " will be used."
+			<< "\n";
 	}
 	else
 	{
-		fName = getString("Please enter the file you would like to load in: ");
+		fName = getString("Please enter the file you would like to load in: "); //T5.N0.1K.D1K
 		size = getTransNum(fName);
 		min = getInt("Please enter the minimum support: ");
 	}
+
+	cout
+		<< "\n"
+		<< "Working...";
 
 	LinkedList<int>* data = loadData(fName, size, isStub, showDebugInfo);
 
@@ -32,9 +44,16 @@ void mainMenu(bool isStub, bool showDebugInfo)
 
 	writeToFile(result);
 
-	if(showDebugInfo)
-	cout 
-		<< "Done. Operation took " << time << "s to complete.\nResults are in 'result.txt'";
+	if (showDebugInfo)
+	{
+		cout
+			<< "Results: "
+			<< "\n";
+
+		result.display();
+	}
+
+	cout << "Done. Operation took " << time << "s to complete.\nResults are in 'result.txt'";
 
 	pause();
 
@@ -43,7 +62,7 @@ void mainMenu(bool isStub, bool showDebugInfo)
 
 LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInfo)
 {
-	ifstream file("dataset/" + fName + ".txt");
+	ifstream file(fileFormat(fName));
 
 	if (!file.good())
 	{
@@ -106,6 +125,11 @@ LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInf
 		
 		return transactions;
 	}
+}
+
+string fileFormat(string fName)
+{
+	return "dataset/" + fName + ".txt";
 }
 
 int getTransNum(string fileName)

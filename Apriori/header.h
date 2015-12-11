@@ -14,6 +14,8 @@ void mainMenu(bool isStub,  bool showDebugInfo);
 
 LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInfo);
 
+string fileFormat(string fName);
+
 int getTransNum(string fileName);
 
 bool isDigit(char c);
