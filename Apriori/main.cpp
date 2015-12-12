@@ -3,7 +3,7 @@
 int main()
 {
 	bool
-		isStub = true,
+		isStub = false,
 		showDebugInfo = true;	
 
 	//T5.N0.1K.D1K

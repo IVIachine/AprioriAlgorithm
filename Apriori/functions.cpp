@@ -12,7 +12,7 @@ void mainMenu(bool isStub, bool showDebugInfo)
 	{
 		fName = "test";
 		size = 100;
-		min = 3;
+		min = 10;
 
 		cout
 			<< "Running in debug mode."
@@ -100,7 +100,7 @@ LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInf
 			if (showDebugInfo)
 				cout
 				<< "\n\n"
-				<< space() << "The file, " << fileFormat(fName) << ", was found. (" << size << " transactions)";
+				<< space() << "The file, '" << fileFormat(fName) << "', was found. (" << size << " transactions)";
 		}
 
 		int trans, item;

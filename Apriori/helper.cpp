@@ -31,6 +31,17 @@ string getString(string message)
 	return str;
 }
 
+bool isNumber(string str)
+{
+	for (auto i = str.begin(); i != str.end(); i++)
+	{
+		if (!isdigit(*i))
+			return false;
+	}
+
+	return true;
+}
+
 string line(char c, int length, bool newLine)
 {
 	string txt = "";
@@ -47,41 +58,10 @@ string line(char c, int length, bool newLine)
 	return txt;
 }
 
-bool isNumber(string str)
-{
-	for (auto i = str.begin(); i != str.end(); i++)
-	{
-		if (!isdigit(*i))
-			return false;
-	}
-
-	return true;
-}
-
 void pause()
 {
 	cout << "\n\n";
 	system("pause");
-}
-
-string space(int numTabs)
-{
-	string spacing = "";
-
-	for (int i = 0; i < numTabs; i++)
-		spacing += "\t";
-
-	return spacing;
-}
-
-string space(int numTabs, char c)
-{
-	string spacing = "";
-
-	for (int i = 0; i < numTabs * 8; i++)
-		spacing += c;
-
-	return spacing;
 }
 
 void showProgress(float progress, int maxWidth, int hSpacing)
@@ -92,20 +72,17 @@ void showProgress(float progress, int maxWidth, int hSpacing)
 	cout
 		<< "\r"
 		<< space(hSpacing)
-		<< percent << "% " << string(width, '|') << string(maxWidth - width, '-') << "";
+		<< percent << "% " << string(width, '|') << string(maxWidth - width, '-');
 
 	cout.flush();
+}
 
-	// Tester
-	/*
-	float p = 0;
-	while(p <= 1)
-	{
-		p += 0.05;
-		showProgress(p, 50);
-		Sleep(60);
-	}
+string space(int numTabs)
+{
+	string spacing = "";
 
-	pause();
-	*/
+	for (int i = 0; i < numTabs; i++)
+		spacing += "\t";
+
+	return spacing;
 }
