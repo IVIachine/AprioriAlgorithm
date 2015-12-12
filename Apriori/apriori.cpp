@@ -109,13 +109,13 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 			return lastC;
 		}
 
-		if (showDebugInfo)
 		cout
 			<< space(1) << "K: " << k
 			<< "\n"
 			<< line(' ', 7, false) << line('*', 20)
 			<< "\n\n"
-			<< space(2) << "Generating all combinations of size [" << k << "]";
+			<< space(2) << "Generating all combinations of size [" << k << "]"
+			<< "\n\n";
 
 		TimerSystem timer;
 		double time;
@@ -124,6 +124,9 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 
 		for (int i = 0; i < size; i++)
 		{
+			float p = (float)(i + 1);
+			showProgress(p / size, 35, 2);
+
 			// All possible combinations within a transaction
 			ObjectList c = aprioriGen(data[i], k);
 
@@ -156,7 +159,6 @@ ObjectList aprioriAlgorithm(LinkedList<int>* data, int size, int min, bool showD
 
 		time = timer.getTime();
 
-		if (showDebugInfo)
 		cout
 			<< space(2) << "Number of combinations generated: " << C.size()
 			<< "\n\n"

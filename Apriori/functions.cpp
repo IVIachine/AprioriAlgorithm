@@ -12,7 +12,7 @@ void mainMenu(bool isStub, bool showDebugInfo)
 	{
 		fName = "test";
 		size = 100;
-		min = 10;
+		min = 3;
 
 		cout
 			<< "Running in debug mode."

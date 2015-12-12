@@ -17,6 +17,6 @@ bool	isNumber(string str);
 void	pause();
 string	space(int numTabs = 1);
 string	space(int numTabs, char c);
-void	showProgress(float progress, int maxWidth);
+void	showProgress(float progress, int maxWidth, int hSpacing = 0);
 
 #endif // !_HELPER_H_

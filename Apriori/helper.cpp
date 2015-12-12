@@ -84,16 +84,28 @@ string space(int numTabs, char c)
 	return spacing;
 }
 
-void showProgress(float progress, int maxWidth)
+void showProgress(float progress, int maxWidth, int hSpacing)
 {
 	int percent = progress * 100;
 	int width = progress * maxWidth;
 
-	for (int i = 0; i < percent; i++)
+	cout
+		<< "\r"
+		<< space(hSpacing)
+		<< percent << "% " << string(width, '|') << string(maxWidth - width, '-') << "";
+
+	cout.flush();
+
+	// Tester
+	/*
+	float p = 0;
+	while(p <= 1)
 	{
-		cout
-			<< "\r"
-			<< percent << "% [" << string(width, '*') << string(maxWidth - width, ' ') << "]"
-			<< flush;
+		p += 0.05;
+		showProgress(p, 50);
+		Sleep(60);
 	}
+
+	pause();
+	*/
 }

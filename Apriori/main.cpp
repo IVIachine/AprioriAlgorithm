@@ -4,7 +4,7 @@ int main()
 {
 	bool
 		isStub = true,
-		showDebugInfo = true;
+		showDebugInfo = true;	
 
 	//T5.N0.1K.D1K
 	mainMenu(isStub, showDebugInfo);
