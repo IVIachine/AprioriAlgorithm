@@ -1,7 +1,28 @@
+/*Author: Tyler Chermely, Adam Gurman
+Class : CSI - 281 - 03
+Assignment : Final Project Implementation
+Date Assigned : Thursday, November 19, 2015 11:00AM
+Due Date : Due : Saturday, December 12, 2015 11:59PM
+Description :
+To implement the Apriori algorithm
+Certification of Authenticity :
+I certify that this is entirely my own work, except where I have given fullydocumented
+references to the work of others.I understand the definition and
+consequences of plagiarism and acknowledge that the assessor of this assignment
+may, for the purpose of assessing this assignment :
+-Reproduce this assignment and provide a copy to another member of
+academic staff; and / or
+- Communicate a copy of this assignment to a plagiarism checking service
+(which may then retain a copy of this assignment on its database for
+the purpose of future plagiarism checking)*/
+
 #include "header.h"
 #include <fstream>
 #include <sstream>
 
+//Purpose: Preforms the necessary loop to gather data before preforming the algorithm
+//Pre: Called from main
+//Post: Gathers data/runs the algorithm
 void mainMenu(bool isStub, bool showDebugInfo)
 {
 	string fileIn;
@@ -76,6 +97,9 @@ void mainMenu(bool isStub, bool showDebugInfo)
 	delete[] data;
 }
 
+//Purpose: Load the data from the file into a hash table
+//Pre: Filename passed in
+//Returns a hash table with all the values or calls the main menu function
 LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInfo)
 {
 	ifstream file(fileFormat(fName));
@@ -127,11 +151,17 @@ LinkedList<int>* loadData(string fName, int size, bool isStub, bool showDebugInf
 	}
 }
 
+//Purpose: To change the filename to desired file format
+//Pre: None
+//Post: Returns the correct file format string
 string fileFormat(string fName)
 {
 	return "dataset/" + fName + ".txt";
 }
 
+//Purpose: To get the number of transactions in a file based on its name
+//Pre: filename passed in
+//Post: The number of transactions is returned
 int getTransNum(string fileName)
 {
 	string tmp = "";
@@ -179,14 +209,17 @@ int getTransNum(string fileName)
 	}
 }
 
+//Purpose: Check if a character is an int
+//Pre: Character passed in
+//Post: Returns if it is an int or not
 bool isDigit(char c)
 {
-	// return isdigit(c);
-	// lol
-
 	return ('0' <= c && c <= '9');
 }
 
+//Purpose: To write the results to a text file
+//Pre: The results list has data
+//Post: Writes the results to results.txt
 void writeToFile(string fName, ObjectList theResult)
 {
 	ofstream of;

@@ -33,9 +33,6 @@
     <ClInclude Include="helper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="timerSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
