@@ -20,6 +20,6 @@ int getTransNum(string fileName);
 
 bool isDigit(char c);
 
-void writeToFile(ObjectList theResult);
+void writeToFile(string fName, ObjectList theResult);
 
 

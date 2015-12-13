@@ -7,7 +7,15 @@ int main()
 		showDebugInfo = true;	
 
 	//T5.N0.1K.D1K
-	mainMenu(isStub, showDebugInfo);
+	//T5.N0.1K.D10K
+	//T5.N0.1K.D100K
+	
+	while (true)
+	{
+		clear();
+
+		mainMenu(isStub, showDebugInfo);
+	}
 
 	return 0;
 }

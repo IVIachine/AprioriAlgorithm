@@ -4,42 +4,47 @@
 
 void mainMenu(bool isStub, bool showDebugInfo)
 {
-	string fName;
-	int size;
-	int min;
+	string fileIn;
+	int
+		size,
+		min;
 	
+	/*	Initilization
+	* * * * * * * * * * * * * * * * * * */
 	if (isStub)
 	{
-		fName = "test";
+		fileIn = "test";
 		size = 100;
 		min = 10;
 
 		cout
 			<< "Running in debug mode."
 			<< "\n\n"
-			<< space() << "Program will use '" << fileFormat(fName) << "'."
+			<< space() << "Program will use '" << fileFormat(fileIn) << "'."
 			<< "\n\n"
 			<< space() << "The test file has " << size << " transactions. A minumum support of " << min << " will be used."
 			<< "\n";
 	}
 	else
 	{
-		fName = getString("Please enter the file you would like to load in: ");
-		size = getTransNum(fName);
+		fileIn = getString("Please enter the file you would like to load in: ");
+		size = getTransNum(fileIn);
 		min = getInt("Please enter the minimum support: ");
 	}
 
 	TimerSystem timer;
 	double time;
 
-	cout.precision(5);
+	cout.precision(3);
 
+	/*	Load Data
+	* * * * * * * * * * * * * * * * * * */
 	cout
 		<< "\n"
 		<< "Loading data... ";
 
 	timer.startClock();
-	LinkedList<int>* data = loadData(fName, size, isStub, showDebugInfo);
+	LinkedList<int>* data = loadData(fileIn, size, isStub, showDebugInfo);
 	time = timer.getTime();
 	
 	cout
@@ -48,6 +53,9 @@ void mainMenu(bool isStub, bool showDebugInfo)
 		<< "Operation took (" << time << ") seconds to complete."
 		<< "\n\n\n";
 
+
+	/*	Apriori Algorithm
+	* * * * * * * * * * * * * * * * * * */
 	cout << "Running Apriori Algorithm...";
 
 	timer.startClock();
@@ -59,10 +67,9 @@ void mainMenu(bool isStub, bool showDebugInfo)
 		<< "\n"
 		<< "Operation took (" << time << ") seconds to complete."
 		<< "\n\n"
+		<< "Total number of combinations generated: " << result.size() << " "
+		<< "\n\n"
 		<< "Results can be found in 'result.txt'";
-
-
-	writeToFile(result);
 
 	pause();
 
@@ -180,10 +187,10 @@ bool isDigit(char c)
 	return ('0' <= c && c <= '9');
 }
 
-void writeToFile(ObjectList theResult)
+void writeToFile(string fName, ObjectList theResult)
 {
 	ofstream of;
-	of.open("results.txt");
+	of.open("results_" + fName + ".txt");
 	if (!of.fail())
 	{
 		for (int i = 0; i < theResult.size(); i++)

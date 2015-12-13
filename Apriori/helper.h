@@ -15,7 +15,7 @@ string	getString(string message = "Requesting string: ");
 bool	isNumber(string str);
 string	line(char c, int length, bool newLine = true);
 void	pause();
-void	showProgress(float progress, int maxWidth, int hSpacing = 0);
+void	showProgress(float progress, int maxWidth = 50, int hSpacing = 0);
 string	space(int numTabs = 1);
 
 #endif // !_HELPER_H_
